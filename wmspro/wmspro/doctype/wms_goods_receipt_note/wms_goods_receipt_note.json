@@ -222,7 +222,7 @@
    "fieldname": "putaway_strategy",
    "fieldtype": "Select",
    "label": "Putaway Strategy",
-   "options": "ABC Slotting\nNearest Empty\nFEFO Zone\nCross-Dock"
+   "options": "\nABC Slotting\nNearest Empty\nFEFO Zone\nCross-Dock"
   },
   {
    "fieldname": "total_qty_received",
@@ -270,7 +270,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Draft\nReceived\nQC Pending\nPartially Accepted Completed\nRejected",
+   "options": "Draft\nReceived\nQC Pending\nPartially Accepted\nCompleted\nRejected",
    "reqd": 1
   },
   {
@@ -298,7 +298,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-20 11:38:08.118039",
+ "modified": "2026-02-20 13:01:00.131593",
  "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Goods Receipt Note",

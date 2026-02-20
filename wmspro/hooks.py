@@ -145,6 +145,27 @@ app_license = "mit"
 # 	}
 # }
 
+fixtures = [
+    {
+        "doctype": "Workspace",
+        "filters": [
+            ["name", "=", "WMSPro"]
+        ]
+    },
+    {
+        "dt": "Custom HTML Block",
+        "filters": [
+            ["name", "=", "OMS Requisition Order Dashboard"]
+        ]
+    },
+    {
+        "dt": "Workflow",
+        "filters": [
+            ["name", "=", "OMS Req Work flow"]
+        ]
+    }
+]
+
 # Scheduled Tasks
 # ---------------
 

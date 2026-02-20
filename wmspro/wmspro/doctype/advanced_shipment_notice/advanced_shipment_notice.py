@@ -10,21 +10,21 @@ class AdvancedShipmentNotice(Document):
 	def on_submit(self):
 		"""Auto-create WMS Goods Receipt Note when ASN is submitted"""
 		try:
-			frappe.msgprint(f"DEBUG: on_submit method triggered for ASN: {self.name}")
+			
 			frappe.log_error(f"Starting GRN creation for ASN: {self.name}", "ASN Submit Debug")
 			
-			# Check if required fields exist
-			frappe.msgprint(f"DEBUG: Supplier: {self.supplier}")
-			frappe.msgprint(f"DEBUG: Company: {self.company}")
-			frappe.msgprint(f"DEBUG: Warehouse: {self.warehouse}")
-			frappe.msgprint(f"DEBUG: Purchase Order: {self.purchase_order}")
+			# # Check if required fields exist
+			# frappe.msgprint(f"DEBUG: Supplier: {self.supplier}")
+			# frappe.msgprint(f"DEBUG: Company: {self.company}")
+			# frappe.msgprint(f"DEBUG: Warehouse: {self.warehouse}")
+			# frappe.msgprint(f"DEBUG: Purchase Order: {self.purchase_order}")
 			
 			if not self.supplier:
 				frappe.throw("Supplier is required to create GRN")
 			if not self.company:
 				frappe.throw("Company is required to create GRN")
 			
-			frappe.msgprint("DEBUG: Creating GRN document...")
+			# frappe.msgprint("DEBUG: Creating GRN document...")
 			try:
 				# Create WMS Goods Receipt Note
 				grn = frappe.get_doc({
@@ -41,7 +41,7 @@ class AdvancedShipmentNotice(Document):
 					"status": "Draft"  # Create in Draft state
 				})
 				
-				frappe.msgprint("DEBUG: GRN document created successfully")
+				# frappe.msgprint("GRN document created successfully")
 			except Exception as doc_error:
 				frappe.msgprint(f"DEBUG: Error creating GRN document: {str(doc_error)}")
 				frappe.log_error(f"Error creating GRN document: {str(doc_error)}", "ASN Submit Error")
@@ -49,26 +49,28 @@ class AdvancedShipmentNotice(Document):
 			frappe.log_error(f"GRN doc created with basic fields", "ASN Submit Debug")
 			
 			# Insert items from ASN to GRN
-			frappe.msgprint(f"DEBUG: Checking ASN items...")
+			# frappe.msgprint(f"DEBUG: Checking ASN items...")
 			if not self.advanced_shipment_notice_details:
 				frappe.throw("No items found in ASN to create GRN")
 			
 			frappe.msgprint(f"DEBUG: Found {len(self.advanced_shipment_notice_details)} items in ASN")
 			
 			for i, asn_item in enumerate(self.advanced_shipment_notice_details):
-				frappe.msgprint(f"DEBUG: Processing item {i+1}: {asn_item.item_code}")
+				# frappe.msgprint(f"DEBUG: Processing item {i+1}: {asn_item.item_code}")
+				# frappe.msgprint(f"DEBUG: Item fields - ordered_qty: {asn_item.ordered_qty}, expected_qty: {getattr(asn_item, 'expected_qty', None)}")
+				
 				grn.append("wms_grn_item", {
 					"item_code": asn_item.item_code,
 					"item_name": asn_item.item_name,
 					"description": asn_item.description,
 					"ordered_qty": asn_item.ordered_qty,
-					"expected_qty": asn_item.ordered_qty,
+					"qty_expected": getattr(asn_item, 'expected_qty', None) or asn_item.ordered_qty,
 					"uom": asn_item.uom
 				})
-				frappe.msgprint(f"DEBUG: Item {i+1} appended to GRN")
+				frappe.msgprint(f"DEBUG: Item {i+1} appended to GRN with expected_qty: {getattr(asn_item, 'expected_qty', None) or asn_item.ordered_qty}")
 			
-			frappe.msgprint(f"DEBUG: All {len(self.advanced_shipment_notice_details)} items appended to GRN")
-			frappe.log_error(f"Items added to GRN: {len(self.advanced_shipment_notice_details)}", "ASN Submit Debug")
+			# frappe.msgprint(f"DEBUG: All {len(self.advanced_shipment_notice_details)} items appended to GRN")
+			# frappe.log_error(f"Items added to GRN: {len(self.advanced_shipment_notice_details)}", "ASN Submit Debug")
 			
 			# Insert and save GRN
 			try:

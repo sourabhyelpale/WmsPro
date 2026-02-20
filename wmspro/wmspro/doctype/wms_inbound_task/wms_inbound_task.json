@@ -37,7 +37,8 @@
   "qc_status",
   "storage_location",
   "rejection_reason",
-  "damage_type"
+  "damage_type",
+  "manufacturing_date"
  ],
  "fields": [
   {
@@ -85,12 +86,16 @@
   {
    "fieldname": "item_code",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Item Code",
    "options": "Item"
   },
   {
    "fieldname": "item_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Item Name"
   },
   {
@@ -101,6 +106,8 @@
   {
    "fieldname": "batch_no",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Batch no.",
    "options": "Batch"
   },
@@ -116,6 +123,8 @@
   {
    "fieldname": "qty_expected",
    "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Qty Expected"
   },
   {
@@ -214,14 +223,19 @@
    "fieldname": "valuation_rate",
    "fieldtype": "Currency",
    "label": "Valuation Rate"
+  },
+  {
+   "fieldname": "manufacturing_date",
+   "fieldtype": "Date",
+   "label": "Manufacturing Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-18 18:17:09.260454",
- "modified_by": "Administrator",
+ "modified": "2026-02-20 12:48:18.590268",
+ "modified_by": "vedika.patil@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Inbound Task",
  "owner": "vedika.patil@erpdata.in",
