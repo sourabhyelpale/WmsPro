@@ -1,4 +1,36 @@
 frappe.ui.form.on('Advanced Shipment Notice', {
+    
+    refresh: function(frm) {
+        console.log("ASN Form Refreshed");
+        console.log("Current doc status:", frm.doc.docstatus);
+        console.log("Current doc name:", frm.doc.name);
+    },
+    
+    before_submit: function(frm) {
+        console.log("=== ASN SUBMISSION STARTED ===");
+        console.log("ASN Name:", frm.doc.name);
+        console.log("Supplier:", frm.doc.supplier);
+        console.log("Company:", frm.doc.company);
+        console.log("Warehouse:", frm.doc.warehouse);
+        console.log("Purchase Order:", frm.doc.purchase_order);
+        console.log("Items count:", frm.doc.advanced_shipment_notice_details ? frm.doc.advanced_shipment_notice_details.length : 0);
+        
+        if (frm.doc.advanced_shipment_notice_details) {
+            console.log("Items:", frm.doc.advanced_shipment_notice_details);
+        }
+    },
+    
+    after_save: function(frm) {
+        console.log("=== ASN SAVED ===");
+        console.log("Docstatus after save:", frm.doc.docstatus);
+        console.log("Name after save:", frm.doc.name);
+    },
+    
+    on_submit: function(frm) {
+        console.log("=== ASN SUBMITTED SUCCESSFULLY ===");
+        console.log("Final docstatus:", frm.doc.docstatus);
+        console.log("Final name:", frm.doc.name);
+    },
 
    
     supplier: function(frm) {
@@ -14,15 +46,19 @@ frappe.ui.form.on('Advanced Shipment Notice', {
         // Auto-fetch supplier name
         if (frm.doc.supplier) {
             frappe.db.get_value("Supplier", frm.doc.supplier, "supplier_name", function(r) {
-                console.log("Supplier API response:", r);
-                console.log("Type of r.message:", typeof r.message);
-                console.log("r.message keys:", r.message ? Object.keys(r.message) : 'No message');
+                // console.log("Supplier API response:", r);
+                // console.log("Response keys:", Object.keys(r));
                 
-                if (r.message && r.message.supplier_name !== undefined && r.message.supplier_name !== null) {
+                // Check if supplier_name is directly in response or in message
+                if (r.supplier_name) {
+                    frm.set_value("supplier_name", r.supplier_name);
+                    //console.log("Supplier name set from response:", r.supplier_name);
+                } else if (r.message && r.message.supplier_name) {
                     frm.set_value("supplier_name", r.message.supplier_name);
-                    console.log("Supplier name set:", r.message.supplier_name);
+                    //console.log("Supplier name set from message:", r.message.supplier_name);
                 } else {
-                    console.log("No supplier name found for:", frm.doc.supplier);
+                    //console.log("No supplier name found for:", frm.doc.supplier);
+                    //console.log("Full response:", r);
                 }
             });
         }

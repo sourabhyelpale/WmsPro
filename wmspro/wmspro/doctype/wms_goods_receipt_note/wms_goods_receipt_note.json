@@ -101,7 +101,7 @@
    "fieldname": "receipt_type",
    "fieldtype": "Select",
    "label": "Receipt Type",
-   "options": "Standard\nBlind\nManual\nOffline",
+   "options": "\nStandard\nBlind\nManual\nOffline",
    "reqd": 1
   },
   {
@@ -183,7 +183,7 @@
    "fieldname": "discrepancy_type",
    "fieldtype": "Select",
    "label": "Discrepancy Type",
-   "options": "Quantity\nQuality\nWrong Item\nDamage\nExpiry"
+   "options": "\nQuantity\nQuality\nWrong Item\nDamage\nExpiry"
   },
   {
    "fieldname": "discrepancy_notes",
@@ -298,7 +298,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-19 11:10:36.627831",
+ "modified": "2026-02-20 11:38:08.118039",
  "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Goods Receipt Note",
