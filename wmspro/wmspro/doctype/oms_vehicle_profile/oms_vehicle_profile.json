@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:VEH-.{registration_no}",
+ "creation": "2026-02-18 10:46:44.150725",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "registration_no",
+  "transporter",
+  "max_weight_kg",
+  "temp_min",
+  "cold_chain_capable",
+  "hazmat_certified",
+  "column_break_wkwn",
+  "vehicle_name",
+  "driver",
+  "pallet_capacity",
+  "temp_max_c",
+  "is_active",
+  "column_break_xsgy",
+  "vehicle_type",
+  "volume_capacity_cbm",
+  "fuel_type",
+  "avg_kmh",
+  "cost_per_km",
+  "section_break_llkz",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "registration_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Registration No.",
+   "length": 20,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "vehicle_name",
+   "fieldtype": "Data",
+   "label": "Vehicle Name",
+   "length": 60,
+   "reqd": 1
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Select",
+   "label": "Vehicle Type",
+   "options": "Select\nMotorcycle\nVan\nTruck (3T)\nTruck (8T)\nTruck (15T)\nRefrigerated Van Refrigerated Truck\nCold Chain Tanker",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transporter",
+   "fieldtype": "Link",
+   "label": "Transporter",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "User"
+  },
+  {
+   "fieldname": "max_weight_kg",
+   "fieldtype": "Float",
+   "label": "Max. weight Kg",
+   "reqd": 1
+  },
+  {
+   "fieldname": "volume_capacity_cbm",
+   "fieldtype": "Float",
+   "label": "Volume Capacity CBM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wkwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cold_chain_capable",
+   "fieldtype": "Check",
+   "label": "Cold Chain Capable"
+  },
+  {
+   "fieldname": "pallet_capacity",
+   "fieldtype": "Int",
+   "label": "Pallet Capacity"
+  },
+  {
+   "fieldname": "temp_min",
+   "fieldtype": "Float",
+   "label": "Temp Min. C"
+  },
+  {
+   "fieldname": "temp_max_c",
+   "fieldtype": "Float",
+   "label": "Temp Max. C "
+  },
+  {
+   "default": "0",
+   "fieldname": "hazmat_certified",
+   "fieldtype": "Check",
+   "label": "Hazmat Certified"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "Fuel Type",
+   "options": "Select\nDiesel\nPetrol\nElectric\nCNG\nHybrid"
+  },
+  {
+   "default": "40",
+   "fieldname": "avg_kmh",
+   "fieldtype": "Float",
+   "label": "Avg Speed Kmh"
+  },
+  {
+   "fieldname": "cost_per_km",
+   "fieldtype": "Currency",
+   "label": "Cost Per Km"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "section_break_llkz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_xsgy",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:07.433783",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Vehicle Profile",
+ "naming_rule": "Expression",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

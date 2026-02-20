@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-19 10:39:09.042452",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "carrier_name",
+  "carrier_type",
+  "email",
+  "is_active",
+  "column_break_xsrz",
+  "carrier_code",
+  "contact_person",
+  "performance_score",
+  "api_integration",
+  "column_break_ecfw",
+  "supplier",
+  "phone",
+  "tracking_api_endpoint",
+  "section_break_cqhf",
+  "sevice_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "carrier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Carrier Name ",
+   "length": 100,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "carrier_type",
+   "fieldtype": "Select",
+   "label": "Carrier Type ",
+   "options": "Select\nThird-Party\nOwn Fleet\nCourier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_xsrz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "carrier_code",
+   "fieldtype": "Data",
+   "label": "Carrier Code",
+   "length": 20,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person",
+   "length": 100
+  },
+  {
+   "fieldname": "performance_score",
+   "fieldtype": "Float",
+   "label": "Performance Score"
+  },
+  {
+   "default": "0",
+   "fieldname": "api_integration",
+   "fieldtype": "Check",
+   "label": "API Integration "
+  },
+  {
+   "fieldname": "column_break_ecfw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "length": 20
+  },
+  {
+   "fieldname": "tracking_api_endpoint",
+   "fieldtype": "Data",
+   "label": "Tracking API Endpoint "
+  },
+  {
+   "fieldname": "section_break_cqhf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sevice_type",
+   "fieldtype": "Small Text",
+   "label": "Sevice Type "
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 11:07:13.335236",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Carrier",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

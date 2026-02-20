@@ -1,0 +1,255 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-18 17:28:14.438917",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_duu9",
+  "naming_series",
+  "outbound_shipment",
+  "pick_date",
+  "amended_from",
+  "zone",
+  "column_break_wpbd",
+  "sales_order",
+  "delivery_note",
+  "customer",
+  "customer_name",
+  "column_break_rkaw",
+  "warehouse",
+  "picking_strategy",
+  "path_optimization",
+  "wave_number",
+  "section_break_hpjo",
+  "items",
+  "section_break_sotf",
+  "total_short_qty",
+  "total_qty_picked",
+  "stock_entry",
+  "column_break_llcy",
+  "pick_completion_pct",
+  "started_at",
+  "completed_at",
+  "created_offline",
+  "column_break_vemt",
+  "assigned_to",
+  "status",
+  "actual_time_minutes",
+  "estimated_time_minutes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_duu9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "PKL-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PKL-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "outbound_shipment",
+   "fieldtype": "Link",
+   "label": "Outbound Shipment",
+   "options": "WMS Outbound Shipment"
+  },
+  {
+   "fieldname": "pick_date",
+   "fieldtype": "Date",
+   "label": "Pick Date"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WMS Pick List",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone",
+   "options": "WMS Zone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wpbd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery Note",
+   "options": "Delivery Note"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "column_break_rkaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "picking_strategy",
+   "fieldtype": "Select",
+   "label": "Picking Strategy",
+   "options": "FEFO\nFIFO\nLIFO\nManual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "path_optimization",
+   "fieldtype": "Select",
+   "label": "Path Optimization",
+   "options": "Serpentine\nZ-Pattern\nReturn Path\nNone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "wave_number",
+   "fieldtype": "Data",
+   "label": "Wave Number"
+  },
+  {
+   "fieldname": "section_break_hpjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "WMS Pick List Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_sotf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_short_qty",
+   "fieldtype": "Float",
+   "label": "Total Short Qty"
+  },
+  {
+   "fieldname": "total_qty_picked",
+   "fieldtype": "Float",
+   "label": "Total Qty Picked"
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "column_break_llcy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pick_completion_pct",
+   "fieldtype": "Percent",
+   "label": "Pick Completion Pct."
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "default": "0",
+   "fieldname": "created_offline",
+   "fieldtype": "Check",
+   "label": "Created Offline"
+  },
+  {
+   "fieldname": "column_break_vemt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReleased\nAssigned\nPicking\nCompleted\nShort Picked\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_time_minutes",
+   "fieldtype": "Float",
+   "label": "Actual Time Minutes"
+  },
+  {
+   "fieldname": "estimated_time_minutes",
+   "fieldtype": "Float",
+   "label": "Estimated Time Minutes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:07:38.677222",
+ "modified_by": "sourabh.yelpale@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Pick List",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sourabh.yelpale@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

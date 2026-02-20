@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{dock_code}-{#####}",
+ "creation": "2026-02-19 10:32:43.328131",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "dock_code",
+  "dock_name",
+  "capacity_per_slot",
+  "slot_duration_minutes",
+  "temperature_controlled",
+  "column_break_hsie",
+  "warehouse",
+  "naming_series",
+  "height_clearance_feet",
+  "is_active",
+  "column_break_jyjj",
+  "dock_type",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "dock_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Dock Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dock_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Dock Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity_per_slot",
+   "fieldtype": "Int",
+   "label": "Capacity Per Slot "
+  },
+  {
+   "fieldname": "slot_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Slot Duration Minutes",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "temperature_controlled",
+   "fieldtype": "Check",
+   "label": "Temperature Controlled"
+  },
+  {
+   "fieldname": "column_break_hsie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "default": "DOCK-.[warehouse_abbr]-.####.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "DOCK-.[warehouse_abbr]-.####.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "height_clearance_feet",
+   "fieldtype": "Float",
+   "label": "Height Clearance Feet"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_jyjj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dock_type",
+   "fieldtype": "Select",
+   "label": "Dock Type",
+   "options": "Receiving\nShipping\nBoth",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 16:22:40.511222",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Dock",
+ "naming_rule": "Expression",
+ "owner": "sourabh.yelpale@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

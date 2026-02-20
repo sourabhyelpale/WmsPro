@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 10:50:29.840626",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_rm0n"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_rm0n",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:07.600986",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Rate Card Line",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

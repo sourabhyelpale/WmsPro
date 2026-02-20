@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-17 14:48:43.062944",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "uom",
+  "condition",
+  "column_break_dutg",
+  "batch_no",
+  "require_qc",
+  "column_break_qagu",
+  "expiry_date",
+  "variance_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "\nGood\nDamaged\nHold"
+  },
+  {
+   "fieldname": "column_break_dutg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch No"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_qc",
+   "fieldtype": "Check",
+   "label": "Require Qc"
+  },
+  {
+   "fieldname": "column_break_qagu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "variance_qty",
+   "fieldtype": "Float",
+   "label": "Variance Qty"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:10.087478",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Inbound Receipt",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

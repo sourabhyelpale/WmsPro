@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-19 10:44:32.161436",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_wruf",
+  "amended_from",
+  "naming_series",
+  "facility",
+  "item_code",
+  "forecast_date",
+  "forecast_horizon_days",
+  "forecast_method",
+  "historical_avg_daily",
+  "forecast_qty",
+  "confidence_pct",
+  "current_stock",
+  "reorder_point",
+  "should_trigger_requisition",
+  "requisition_generated",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_wruf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Consumption Forecast",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "FCT-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "facility",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Facility",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "forecast_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Forecast Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "forecast_horizon_days",
+   "fieldtype": "Int",
+   "label": "Forecast Horizon Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "forecast_method",
+   "fieldtype": "Select",
+   "label": "Forecast Method",
+   "options": "ML Model\nMoving Average\nManual\nSeasonal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "historical_avg_daily",
+   "fieldtype": "Float",
+   "label": "Historical Avg Daily"
+  },
+  {
+   "fieldname": "forecast_qty",
+   "fieldtype": "Float",
+   "label": "Forecast Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "confidence_pct",
+   "fieldtype": "Percent",
+   "label": "Confidence Pct"
+  },
+  {
+   "fieldname": "current_stock",
+   "fieldtype": "Float",
+   "label": "Current Stock"
+  },
+  {
+   "fieldname": "reorder_point",
+   "fieldtype": "Float",
+   "label": "Reorder_Point"
+  },
+  {
+   "default": "0",
+   "fieldname": "should_trigger_requisition",
+   "fieldtype": "Check",
+   "label": "should_trigger_requisition"
+  },
+  {
+   "fieldname": "requisition_generated",
+   "fieldtype": "Link",
+   "label": "Requisition Generated",
+   "options": "OMS Requisition Order"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:07:12.889152",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Consumption Forecast",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sanket.lohar@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

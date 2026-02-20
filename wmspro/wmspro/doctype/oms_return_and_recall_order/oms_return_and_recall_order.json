@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 15:09:19.039142",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_bb0g",
+  "amended_from",
+  "naming_series",
+  "return_to_warehouse",
+  "original_requisition",
+  "original_distribution",
+  "recall_reference",
+  "total_return_qty",
+  "quarantine_warehouse",
+  "column_break_uywq",
+  "return_type",
+  "initiating_facility",
+  "status",
+  "disposition",
+  "return_date",
+  "stock_entry",
+  "approved_by",
+  "section_break_qucz",
+  "items",
+  "section_break_demr",
+  "recall_batch_nos",
+  "section_break_tweq",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_bb0g",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Return And Recall Order",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "RRO-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "return_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Return Type",
+   "options": "Customer Return\nFacility Return\nProduct Recall\nExcess Return",
+   "reqd": 1
+  },
+  {
+   "fieldname": "initiating_facility",
+   "fieldtype": "Link",
+   "label": "Initiating Facility",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "return_to_warehouse",
+   "fieldtype": "Link",
+   "label": "Return To Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "original_requisition",
+   "fieldtype": "Link",
+   "label": "Original Requisition",
+   "options": "OMS Requisition Order"
+  },
+  {
+   "fieldname": "original_distribution",
+   "fieldtype": "Link",
+   "label": "Original Distribution",
+   "options": "OMS Distribution Order"
+  },
+  {
+   "fieldname": "recall_reference",
+   "fieldtype": "Data",
+   "label": "Recall Reference"
+  },
+  {
+   "fieldname": "recall_batch_nos",
+   "fieldtype": "Text",
+   "label": "Recall Batch Nos"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "OMS Return Item"
+  },
+  {
+   "fieldname": "total_return_qty",
+   "fieldtype": "Float",
+   "label": "Total Return Qty"
+  },
+  {
+   "fieldname": "disposition",
+   "fieldtype": "Select",
+   "label": "Disposition",
+   "options": "Return to Stock\nQuarantine\nScrap\nSupplier Return",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quarantine_warehouse",
+   "fieldtype": "Link",
+   "label": "Quarantine Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nApproved\nStock Returned\nQuarantined\nScrapped\nClosed\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_uywq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_qucz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_demr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_tweq",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:06.391470",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Return And Recall Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sanket.lohar@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

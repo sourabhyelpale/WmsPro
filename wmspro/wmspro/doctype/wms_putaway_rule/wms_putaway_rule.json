@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-17 15:05:36.017580",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "priority",
+  "preferred_zone",
+  "column_break_slyu",
+  "warehouse",
+  "bin_type",
+  "check_pmll",
+  "is_active",
+  "column_break_ctfo",
+  "item_group",
+  "max_weight",
+  "max_volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority"
+  },
+  {
+   "fieldname": "preferred_zone",
+   "fieldtype": "Data",
+   "label": "Preferred Zone"
+  },
+  {
+   "fieldname": "column_break_slyu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "bin_type",
+   "fieldtype": "Select",
+   "label": "Bin Type"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_pmll",
+   "fieldtype": "Check",
+   "label": "Fast Moving Only"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_ctfo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "max_weight",
+   "fieldtype": "Float",
+   "label": "Max Weight"
+  },
+  {
+   "fieldname": "max_volume",
+   "fieldtype": "Float",
+   "label": "Max Volume"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:09.991052",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Putaway Rule",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

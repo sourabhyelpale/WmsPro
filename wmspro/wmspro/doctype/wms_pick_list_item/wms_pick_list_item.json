@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 17:49:36.664173",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sequence",
+  "warehouse",
+  "expiry_name",
+  "qty_ordered",
+  "qty_picked",
+  "qty_short",
+  "short_pick_reason",
+  "bin_ovveride_reason",
+  "column_break_afmq",
+  "item_code",
+  "bin_location",
+  "shelf_life_remaining_days",
+  "uom",
+  "sales_order",
+  "sales_order_item",
+  "alternate_batch",
+  "notes",
+  "column_break_vege",
+  "item_name",
+  "batch_no",
+  "serial_no",
+  "picjed_at",
+  "picked_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_name",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Expiry Name"
+  },
+  {
+   "fieldname": "qty_ordered",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Ordered",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_picked",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Picked"
+  },
+  {
+   "fieldname": "qty_short",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Short"
+  },
+  {
+   "fieldname": "short_pick_reason",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Short Pick Reason",
+   "options": "Stock Not Available Damaged\nExpired\nMislabeled\nBin Empty\nOther"
+  },
+  {
+   "fieldname": "bin_ovveride_reason",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Bin Override Reason"
+  },
+  {
+   "fieldname": "column_break_afmq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bin_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Bin Location",
+   "options": "WMS Bin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shelf_life_remaining_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Shelf Life Remaining Days"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "sales_order_item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Order Item"
+  },
+  {
+   "fieldname": "alternate_batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Alternate Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_vege",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Batch No.",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Serial No."
+  },
+  {
+   "fieldname": "picjed_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Picked At"
+  },
+  {
+   "fieldname": "picked_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Picked By",
+   "options": "User"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:08.761536",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Pick List Item",
+ "owner": "sourabh.yelpale@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,195 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:WMS-SET-.{default_staging_warehouse}-.#####",
+ "creation": "2026-02-17 14:33:05.121304",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_staging_warehouse",
+  "inbound_flow_mode",
+  "default_picking_strategy",
+  "main_shelf_life_receiving_days",
+  "default_gs1_company_prefix",
+  "offline_sync_batch_size",
+  "short_pick_approval_required",
+  "column_break_wlas",
+  "default_staging_bin",
+  "over_receipt_tolerance_parent",
+  "default_putaway_strategy",
+  "fefo_shelf_life_buffer_days",
+  "label_printer_ip",
+  "dock_slot_duration_minutes",
+  "autocreate_putaway_tasks",
+  "column_break_hgtr",
+  "defalut_qc_bin",
+  "auto_create_putaway_task",
+  "auto_create_qc_task",
+  "variance_threshold_",
+  "quarantine_warehouse",
+  "near_expiry_alert_days",
+  "label_printer_port"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_staging_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Staging Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "inbound_flow_mode",
+   "fieldtype": "Select",
+   "label": "Inbound Flow Mode",
+   "options": "\nDirect Putaway\nReceive"
+  },
+  {
+   "fieldname": "default_picking_strategy",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Default Picking Strategy",
+   "options": "Select\nFEFO\nFIFO\nLIFO\nManual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "main_shelf_life_receiving_days",
+   "fieldtype": "Int",
+   "label": "Min Shelf Life Receiving Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_gs1_company_prefix",
+   "fieldtype": "Data",
+   "label": "Default GS1 Company Prefix"
+  },
+  {
+   "fieldname": "offline_sync_batch_size",
+   "fieldtype": "Int",
+   "label": "Offline Sync Batch Size",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "short_pick_approval_required",
+   "fieldtype": "Check",
+   "label": "Short Pick Approval Required"
+  },
+  {
+   "fieldname": "column_break_wlas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_staging_bin",
+   "fieldtype": "Link",
+   "label": "Default Staging Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "over_receipt_tolerance_parent",
+   "fieldtype": "Float",
+   "label": "Over Receipt Tolerance Parent "
+  },
+  {
+   "fieldname": "default_putaway_strategy",
+   "fieldtype": "Select",
+   "label": "Default Putaway Strategy",
+   "options": "Select\nABC Slotting\nNearest Empty\nFEFO Zone\nCross-Dock",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fefo_shelf_life_buffer_days",
+   "fieldtype": "Int",
+   "label": "Fefo Shelf Life Buffer Days"
+  },
+  {
+   "fieldname": "label_printer_ip",
+   "fieldtype": "Data",
+   "label": "Label Printer IP"
+  },
+  {
+   "fieldname": "dock_slot_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Dock Slot Duration Minutes",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "autocreate_putaway_tasks",
+   "fieldtype": "Check",
+   "label": "Autocreate Putaway Tasks"
+  },
+  {
+   "fieldname": "column_break_hgtr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "defalut_qc_bin",
+   "fieldtype": "Link",
+   "label": "Defalut Qc Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_putaway_task",
+   "fieldtype": "Check",
+   "label": "Auto Create Putaway Task "
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_qc_task",
+   "fieldtype": "Check",
+   "label": "Auto Create QC Task"
+  },
+  {
+   "fieldname": "variance_threshold_",
+   "fieldtype": "Percent",
+   "label": "Variance Threshold %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quarantine_warehouse",
+   "fieldtype": "Link",
+   "label": "Quarantine Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "near_expiry_alert_days",
+   "fieldtype": "Int",
+   "label": "Near Expiry Alert Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "label_printer_port",
+   "fieldtype": "Int",
+   "label": "Label Printer Port"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 13:00:10.920541",
+ "modified_by": "vedika.patil@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Warehouse Settings",
+ "naming_rule": "Expression",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

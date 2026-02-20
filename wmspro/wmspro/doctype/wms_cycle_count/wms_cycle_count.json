@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 17:26:52.116251",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nyvm",
+  "amended_from",
+  "naming_series",
+  "company",
+  "warehouse",
+  "zone",
+  "column_break_ecsu",
+  "count_type",
+  "abc_class",
+  "sample_percentage",
+  "triggered_by_item",
+  "scheduled_date",
+  "section_break_vfav",
+  "items",
+  "section_break_iodf",
+  "variance_threshold_pct",
+  "total_items_to_count",
+  "total_items_counted",
+  "items_with_variance",
+  "items_pending_approval",
+  "counted_by",
+  "reviewed_by",
+  "column_break_alla",
+  "review_notes",
+  "status",
+  "stock_reconciliation",
+  "posted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_nyvm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WMS Cycle Count",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "CCT-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Data",
+   "label": "Zone"
+  },
+  {
+   "fieldname": "column_break_ecsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "count_type",
+   "fieldtype": "Select",
+   "label": "Count Type"
+  },
+  {
+   "fieldname": "abc_class",
+   "fieldtype": "Select",
+   "label": "abc Class",
+   "options": "A\nB\nC\nAll"
+  },
+  {
+   "fieldname": "sample_percentage",
+   "fieldtype": "Percent",
+   "label": "Sample Percentage"
+  },
+  {
+   "fieldname": "triggered_by_item",
+   "fieldtype": "Link",
+   "label": "Triggered By Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "scheduled_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Scheduled Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_vfav",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "WMS Cycle Count Item"
+  },
+  {
+   "fieldname": "section_break_iodf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "variance_threshold_pct",
+   "fieldtype": "Percent",
+   "label": "variance threshold pct",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_items_to_count",
+   "fieldtype": "Int",
+   "label": "Total items to count"
+  },
+  {
+   "fieldname": "total_items_counted",
+   "fieldtype": "Int",
+   "label": "Total items counted"
+  },
+  {
+   "fieldname": "items_with_variance",
+   "fieldtype": "Int",
+   "label": "Items with variance"
+  },
+  {
+   "fieldname": "items_pending_approval",
+   "fieldtype": "Int",
+   "label": "Items pending approval"
+  },
+  {
+   "fieldname": "counted_by",
+   "fieldtype": "Link",
+   "label": "Counted By",
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_alla",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "review_notes",
+   "fieldtype": "Text",
+   "label": "Review Notes"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Scheduled\nIn Progress\nCompleted\nSupervisor Review Approved\nPosted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stock_reconciliation",
+   "fieldtype": "Link",
+   "label": "Stock Reconciliation",
+   "options": "Stock Reconciliation"
+  },
+  {
+   "fieldname": "posted_on",
+   "fieldtype": "Datetime",
+   "label": "Posted On"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:08.932051",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Cycle Count",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

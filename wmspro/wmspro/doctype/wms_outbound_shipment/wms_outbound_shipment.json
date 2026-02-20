@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-18 17:49:22.641174",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_w1k7",
+  "naming_series",
+  "sales_order",
+  "customer",
+  "to_warehouse",
+  "carrier_service",
+  "total_qty_packed",
+  "status",
+  "column_break_vmpp",
+  "shipmenr_date",
+  "priority",
+  "customer_name",
+  "carrier",
+  "total_qty_ordered",
+  "packing_list",
+  "destination_capacity_checked",
+  "column_break_wwxo",
+  "required_delivery_date",
+  "material_request",
+  "from_warehouse",
+  "carrier_no",
+  "total_qty_picked",
+  "delivery_note",
+  "section_break_vhct",
+  "items",
+  "section_break_uhpm",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_w1k7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "OSH-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming series",
+   "options": "OSH-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "to_warehouse",
+   "fieldtype": "Link",
+   "label": "To Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "carrier_service",
+   "fieldtype": "Data",
+   "label": "Carrier Service"
+  },
+  {
+   "fieldname": "total_qty_packed",
+   "fieldtype": "Float",
+   "label": "Total Qty Packed"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Select\nDraft\nReleased\nPicking\nPacking\nLoaded\nDispatched\nDelivered\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vmpp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipmenr_date",
+   "fieldtype": "Date",
+   "label": "Shipment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Select\nStandard\nUrgent\nEmergency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Link",
+   "label": "Carrier",
+   "options": "WMS Carrier"
+  },
+  {
+   "fieldname": "total_qty_ordered",
+   "fieldtype": "Float",
+   "label": "Total Qty Ordered"
+  },
+  {
+   "fieldname": "packing_list",
+   "fieldtype": "Link",
+   "label": "Packing List",
+   "options": "WMS Packing List"
+  },
+  {
+   "default": "0",
+   "fieldname": "destination_capacity_checked",
+   "fieldtype": "Check",
+   "label": "Destination Capacity Checked"
+  },
+  {
+   "fieldname": "column_break_wwxo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "required_delivery_date",
+   "fieldtype": "Date",
+   "label": "Required Delivery Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "label": "Material Request",
+   "options": "Material Request"
+  },
+  {
+   "fieldname": "from_warehouse",
+   "fieldtype": "Link",
+   "label": "From Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "carrier_no",
+   "fieldtype": "Data",
+   "label": "Tracking No."
+  },
+  {
+   "fieldname": "total_qty_picked",
+   "fieldtype": "Float",
+   "label": "Total Qty Picked"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery Note",
+   "options": "Delivery Note"
+  },
+  {
+   "fieldname": "section_break_vhct",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "WMS Shipment Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_uhpm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WMS Outbound Shipment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:18:36.420340",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Outbound Shipment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

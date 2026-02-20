@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 13:58:16.510907",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_g3jo",
+  "amended_from",
+  "company",
+  "source_warehouses",
+  "total_demand_qty",
+  "items_in_shortage",
+  "approved_by",
+  "column_break_naev",
+  "naming_series",
+  "plan_date",
+  "planning_horizon_days",
+  "total_available_qty",
+  "coverage_pct",
+  "status",
+  "section_break_asno",
+  "items",
+  "section_break_zpkh",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_g3jo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Allocation Plan",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "ALP-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plan_date",
+   "fieldtype": "Date",
+   "label": "Plan Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "planning_horizon_days",
+   "fieldtype": "Int",
+   "label": "Planning Horizon Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_warehouses",
+   "fieldtype": "Table MultiSelect",
+   "label": "Source Warehouses",
+   "options": "Stock Location Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "OMS Allocation Plan Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_demand_qty",
+   "fieldtype": "Float",
+   "label": "Total Demand Qty"
+  },
+  {
+   "fieldname": "total_available_qty",
+   "fieldtype": "Float",
+   "label": "Total Available Qty"
+  },
+  {
+   "fieldname": "coverage_pct",
+   "fieldtype": "Percent",
+   "label": "Coverage Pct"
+  },
+  {
+   "fieldname": "items_in_shortage",
+   "fieldtype": "Int",
+   "label": "Items In Shortage"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nGenerated\nUnder Review\nApproved\nDistribution Created\nCompleted",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_naev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_asno",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_zpkh",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:06.719121",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Allocation Plan",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sanket.lohar@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

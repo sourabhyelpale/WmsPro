@@ -1,0 +1,287 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "REQ-.YYYY.-.#####",
+ "creation": "2026-02-18 10:50:14.939535",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_jalf",
+  "naming_series",
+  "company",
+  "requisition_type",
+  "request_date",
+  "required_by_date",
+  "delivery_estimate",
+  "column_break_euzf",
+  "priority",
+  "requesting_facility",
+  "requesting_user",
+  "source_facility",
+  "delivery_address",
+  "cost_center",
+  "budget_available",
+  "section_break_vofz",
+  "items",
+  "section_break_rhyr",
+  "column_break_gtkn",
+  "total_qty",
+  "total_value",
+  "approval_level",
+  "current_approver",
+  "approval_deadline",
+  "status",
+  "rejection_reason",
+  "column_break_edac",
+  "fulfillment_order",
+  "distribution_order",
+  "material_request",
+  "is_non_catalog",
+  "auto_generated",
+  "consumption_reference",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_jalf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming series",
+   "options": "REQ-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requisition_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Requisition Type",
+   "options": "Manual\nAuto-ReplenishmentEmergency\nRecall-Triggered",
+   "reqd": 1
+  },
+  {
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Request Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "required_by_date",
+   "fieldtype": "Date",
+   "label": "Required By Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "delivery_estimate",
+   "fieldtype": "Date",
+   "label": "Delivery Estimate"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Standard\nUrgent\nEmergency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requesting_facility",
+   "fieldtype": "Link",
+   "label": "Requesting Facility",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requesting_user",
+   "fieldtype": "Link",
+   "label": "Requesting User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_facility",
+   "fieldtype": "Link",
+   "label": "Source Facility",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_euzf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Link",
+   "label": "Delivery Address",
+   "options": "Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Centor",
+   "options": "Cost Center"
+  },
+  {
+   "default": "0",
+   "fieldname": "budget_available",
+   "fieldtype": "Check",
+   "label": "Budget Available"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "OMS Requisition Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "total_value",
+   "fieldtype": "Currency",
+   "label": "Total Value"
+  },
+  {
+   "fieldname": "approval_level",
+   "fieldtype": "Select",
+   "label": "Approval Level",
+   "options": "L1\nL2\nL3\nAuto-Approved"
+  },
+  {
+   "fieldname": "current_approver",
+   "fieldtype": "Link",
+   "label": "Current Approver",
+   "options": "User"
+  },
+  {
+   "fieldname": "approval_deadline",
+   "fieldtype": "Datetime",
+   "label": "Approval Deadline"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nSubmitted\nL1 Approved\nL2 Approved\nFully Approved\nAllocated\nFulfillment Created\nDelivered / Cancelled / Rejected",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "fulfillment_order",
+   "fieldtype": "Link",
+   "label": "Fulfillment Order",
+   "options": "OMS Fulfillment Order"
+  },
+  {
+   "fieldname": "distribution_order",
+   "fieldtype": "Link",
+   "label": "Distribution Order",
+   "options": "OMS Distribution Order"
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "label": "Material Request",
+   "options": "Material Request"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_non_catalog",
+   "fieldtype": "Check",
+   "label": "Is Non Catalog"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_generated",
+   "fieldtype": "Check",
+   "label": "Auto Generated"
+  },
+  {
+   "fieldname": "consumption_reference",
+   "fieldtype": "Link",
+   "label": "Consumption Reference",
+   "options": "OMS Consumption Forecast"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_gtkn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rhyr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_vofz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_edac",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Requisition Order",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 15:38:23.868624",
+ "modified_by": "sanket.lohar@erpdata.in",
+ "module": "WmsPro",
+ "name": "OMS Requisition Order",
+ "naming_rule": "Expression (old style)",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

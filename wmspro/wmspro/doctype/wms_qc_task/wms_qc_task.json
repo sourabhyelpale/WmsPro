@@ -1,0 +1,274 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 09:46:06.567215",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_eqhg",
+  "qc_no",
+  "inspection_type",
+  "column_break_zbco",
+  "inbound_receipt",
+  "quantity",
+  "qc_status",
+  "column_break_noyd",
+  "qc_bin",
+  "notas",
+  "section_break_crle",
+  "naming_series",
+  "grn_reference",
+  "item_code",
+  "item_name",
+  "column_break_brsx",
+  "batch_no",
+  "qty_to_inspect",
+  "sample_size",
+  "column_break_pxxe",
+  "quarantine_warehouse",
+  "temperature_recorded",
+  "coa_attached",
+  "coa_document",
+  "section_break_frlp",
+  "specifications",
+  "section_break_hsgg",
+  "column_break_wusj",
+  "overall_result",
+  "qty_accepted",
+  "qty_rejected",
+  "rejection_reason",
+  "column_break_umwq",
+  "inspected_by",
+  "inspection_date",
+  "approved_by",
+  "erpnext_quality_inspection",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_eqhg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qc_no",
+   "fieldtype": "Data",
+   "label": "Qc NO"
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Select",
+   "label": "Inspection Type",
+   "options": "\nFull\nSampling"
+  },
+  {
+   "fieldname": "column_break_zbco",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inbound_receipt",
+   "fieldtype": "Link",
+   "label": "Inbound Receipt ",
+   "options": "WMS Inbound Receipt"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "qc_status",
+   "fieldtype": "Select",
+   "label": "QC Status",
+   "options": "\nPending\nPassed\nFailed\nHold"
+  },
+  {
+   "fieldname": "column_break_noyd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qc_bin",
+   "fieldtype": "Link",
+   "label": "QC Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "notas",
+   "fieldtype": "Small Text",
+   "label": "Notas"
+  },
+  {
+   "fieldname": "section_break_crle",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "WQI-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grn_reference",
+   "fieldtype": "Link",
+   "label": "grn Reference",
+   "options": "WMS Goods Receipt Note"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "column_break_brsx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch NO"
+  },
+  {
+   "fieldname": "qty_to_inspect",
+   "fieldtype": "Float",
+   "label": "qty To Inspect"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Float",
+   "label": "Sample Size"
+  },
+  {
+   "fieldname": "column_break_pxxe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quarantine_warehouse",
+   "fieldtype": "Link",
+   "label": "Quarantine Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "temperature_recorded",
+   "fieldtype": "Float",
+   "label": "Temperature Recorded"
+  },
+  {
+   "default": "0",
+   "fieldname": "coa_attached",
+   "fieldtype": "Check",
+   "label": "coa Attached"
+  },
+  {
+   "fieldname": "coa_document",
+   "fieldtype": "Attach",
+   "label": "coa Document"
+  },
+  {
+   "fieldname": "section_break_frlp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "specifications",
+   "fieldtype": "Table",
+   "label": "Specifications",
+   "options": "WMS QI Specification Line"
+  },
+  {
+   "fieldname": "section_break_hsgg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_wusj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overall_result",
+   "fieldtype": "Select",
+   "label": "Overall Result",
+   "options": "Accepted\nRejected\nPartially\nAccepted"
+  },
+  {
+   "fieldname": "qty_accepted",
+   "fieldtype": "Float",
+   "label": "qty Accepted"
+  },
+  {
+   "fieldname": "qty_rejected",
+   "fieldtype": "Float",
+   "label": "qty Rejected"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "column_break_umwq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Link",
+   "label": "Inspected By ",
+   "options": "User"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "erpnext_quality_inspection",
+   "fieldtype": "Link",
+   "label": "Erpnext Quality Inspection",
+   "options": "Quality Inspection"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nIn Progress\nPassed\nFailed\nPartially Passed\nCancelled"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:09.686263",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "Wms Qc Task",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

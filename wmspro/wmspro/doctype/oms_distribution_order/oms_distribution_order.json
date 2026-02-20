@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 10:50:37.876494",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_mrc1",
+  "naming_series",
+  "distribution_date",
+  "column_break_vuai",
+  "company",
+  "distribution_type",
+  "column_break_lfhe",
+  "source_warehouse",
+  "plan_reference",
+  "section_break_wodb",
+  "items",
+  "section_break_xitx",
+  "total_facilities",
+  "column_break_ogwb",
+  "total_qty",
+  "column_break_pmrf",
+  "total_value",
+  "section_break_nncg",
+  "status",
+  "approved_by",
+  "column_break_nbpd",
+  "stock_reserved",
+  "fulfillment_created",
+  "section_break_ljnn",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_mrc1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Distribution Order",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "DST-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "distribution_type",
+   "fieldtype": "Select",
+   "label": "Distribution Type",
+   "options": "Planned Replenishment\nCampaign Push\nEmergency Deployment\nRecall Replacement\nSeasonal Pre-stock",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plan_reference",
+   "fieldtype": "Link",
+   "label": "Plan Reference",
+   "options": "OMS Allocation Plan"
+  },
+  {
+   "fieldname": "distribution_date",
+   "fieldtype": "Date",
+   "label": "Distribution Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "OMS Distribution Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_facilities",
+   "fieldtype": "Int",
+   "label": "Total Facilities"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_value",
+   "fieldtype": "Currency",
+   "label": "Total Value"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_reserved",
+   "fieldtype": "Check",
+   "label": "Stock Reserved"
+  },
+  {
+   "default": "0",
+   "fieldname": "fulfillment_created",
+   "fieldtype": "Check",
+   "label": "Fulfillment Created"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nApproved\nStock Reserved\nFulfillment Created\nPartially Dispatched\nDispatched\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "section_break_ljnn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_nncg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nbpd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wodb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_vuai",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lfhe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xitx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ogwb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pmrf",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:06.288351",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Distribution Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sanket.lohar@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

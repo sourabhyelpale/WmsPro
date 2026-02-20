@@ -1,0 +1,310 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-16 18:01:39.217300",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bin_code",
+  "aisle",
+  "bin_type",
+  "max_pallets",
+  "bay",
+  "max_capacity",
+  "available_capacity",
+  "width_cm",
+  "temperature_min_c",
+  "barcode",
+  "is_reserve_location",
+  "naming_series",
+  "column_break_blwo",
+  "warehouse",
+  "rack",
+  "capacity_volume",
+  "is_qc_zone",
+  "is_quarantine",
+  "is_fast_moving",
+  "level",
+  "capacity_uom",
+  "occupancy_",
+  "height_cm",
+  "temperature_max_c",
+  "city",
+  "column_break_pcvi",
+  "zone",
+  "shelf",
+  "capacity_weight",
+  "select_ifyt",
+  "position",
+  "storage_type",
+  "current_occupancy",
+  "length_cm",
+  "weight_limit_kg",
+  "is_staging",
+  "is_pick_location",
+  "is_active",
+  "section_break_zdkk",
+  "blocked_reason",
+  "section_break_eaot",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "bin_code",
+   "fieldtype": "Data",
+   "label": "Bin Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "aisle",
+   "fieldtype": "Data",
+   "label": "Aisle"
+  },
+  {
+   "fieldname": "bin_type",
+   "fieldtype": "Select",
+   "label": "Bin Type",
+   "options": "\npallet\ncarton\nloose"
+  },
+  {
+   "fieldname": "max_pallets",
+   "fieldtype": "Int",
+   "label": "Max Pallets"
+  },
+  {
+   "fieldname": "bay",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Bay",
+   "reqd": 1
+  },
+  {
+   "fieldname": "max_capacity",
+   "fieldtype": "Float",
+   "label": "Max Capacity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "available_capacity",
+   "fieldtype": "Float",
+   "label": "Available Capacity"
+  },
+  {
+   "fieldname": "width_cm",
+   "fieldtype": "Float",
+   "label": "Width Cm"
+  },
+  {
+   "fieldname": "temperature_min_c",
+   "fieldtype": "Float",
+   "label": "Temperature Min C"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_reserve_location",
+   "fieldtype": "Check",
+   "label": "Is Reserve Location"
+  },
+  {
+   "fieldname": "column_break_blwo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "rack",
+   "fieldtype": "Data",
+   "label": "Rack"
+  },
+  {
+   "fieldname": "capacity_volume",
+   "fieldtype": "Float",
+   "label": "Capacity Volume"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_qc_zone",
+   "fieldtype": "Check",
+   "label": "Is Qc Zone"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_quarantine",
+   "fieldtype": "Check",
+   "label": "Is Quarantine"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_fast_moving",
+   "fieldtype": "Check",
+   "label": "Is Fast Moving"
+  },
+  {
+   "fieldname": "level",
+   "fieldtype": "Int",
+   "label": "Level",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity_uom",
+   "fieldtype": "Select",
+   "label": "Capacity UOM",
+   "options": "Select\nPallets\nCartons\nUnits\nKg\nCubic Metres",
+   "reqd": 1
+  },
+  {
+   "fieldname": "occupancy_",
+   "fieldtype": "Percent",
+   "label": "Occupancy %"
+  },
+  {
+   "fieldname": "height_cm",
+   "fieldtype": "Float",
+   "label": "Height Cm"
+  },
+  {
+   "fieldname": "temperature_max_c",
+   "fieldtype": "Float",
+   "label": "Temperature Max C"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_staging",
+   "fieldtype": "Check",
+   "label": "Is Staging"
+  },
+  {
+   "fieldname": "column_break_pcvi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Data",
+   "label": "Zone"
+  },
+  {
+   "fieldname": "shelf",
+   "fieldtype": "Data",
+   "label": "Shelf"
+  },
+  {
+   "fieldname": "capacity_weight",
+   "fieldtype": "Float",
+   "label": "Capacity Weight"
+  },
+  {
+   "fieldname": "select_ifyt",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nActive\nBlocked"
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position"
+  },
+  {
+   "fieldname": "storage_type",
+   "fieldtype": "Link",
+   "label": "Storage Type",
+   "options": "WMS Storage Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "current_occupancy",
+   "fieldtype": "Float",
+   "label": "Current Occupancy"
+  },
+  {
+   "fieldname": "length_cm",
+   "fieldtype": "Float",
+   "label": "Length Cm"
+  },
+  {
+   "fieldname": "weight_limit_kg",
+   "fieldtype": "Float",
+   "label": "Weight Limit Kg"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_pick_location",
+   "fieldtype": "Check",
+   "label": "Is Pick Location"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "section_break_zdkk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "blocked_reason",
+   "fieldtype": "Text",
+   "label": "Blocked Reason"
+  },
+  {
+   "fieldname": "section_break_eaot",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "default": "BIN-.[warehouse_abbr]-.####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "BIN-.[warehouse_abbr]-.####",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 12:38:13.575437",
+ "modified_by": "vedika.patil@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Bin",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

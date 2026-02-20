@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 14:05:05.518149",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "qty_required",
+  "uom",
+  "batch_no",
+  "expiry_date",
+  "shelf_life_remaining_days",
+  "bin_location",
+  "column_break_wqtq",
+  "qty_allocated",
+  "qty_dispatched",
+  "qty_delivered",
+  "qty_short",
+  "short_reason",
+  "alternate_source_warehouse",
+  "requisition_item_ref",
+  "distribution_item_ref"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "qty_required",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "qty Required",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "shelf_life_remaining_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Shelf Life Remaining Days"
+  },
+  {
+   "fieldname": "bin_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bin Location",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "qty_allocated",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "qty Allocated"
+  },
+  {
+   "fieldname": "qty_dispatched",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Dispatched"
+  },
+  {
+   "fieldname": "qty_delivered",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Delivered"
+  },
+  {
+   "fieldname": "qty_short",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Short"
+  },
+  {
+   "fieldname": "short_reason",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Short Reason",
+   "options": "Insufficient Stock\nNear-Expiry Excluded\nBatch Recalled\nOther"
+  },
+  {
+   "fieldname": "alternate_source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Alternate Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "requisition_item_ref",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Requisition Item ref"
+  },
+  {
+   "fieldname": "distribution_item_ref",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Distribution Item ref"
+  },
+  {
+   "fieldname": "column_break_wqtq",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:06.194618",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Fulfillment Item",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 17:39:01.848447",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bin_location",
+  "item_code",
+  "item_name",
+  "batch_no",
+  "expiry_date",
+  "serial_nos",
+  "column_break_sazl",
+  "system_qty",
+  "counted_qty",
+  "qty_variance",
+  "abs_variance_pct",
+  "requires_approval",
+  "variance_cause",
+  "approved",
+  "approval_notes",
+  "recount_required",
+  "uom"
+ ],
+ "fields": [
+  {
+   "fieldname": "bin_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bin Location",
+   "options": "Bin Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item  Name"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "serial_nos",
+   "fieldtype": "Text",
+   "label": "Serial NOs"
+  },
+  {
+   "fieldname": "column_break_sazl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "system_qty",
+   "fieldtype": "Float",
+   "label": "System qty"
+  },
+  {
+   "fieldname": "counted_qty",
+   "fieldtype": "Float",
+   "label": "Counted qty"
+  },
+  {
+   "fieldname": "qty_variance",
+   "fieldtype": "Float",
+   "label": "qty Variance"
+  },
+  {
+   "fieldname": "abs_variance_pct",
+   "fieldtype": "Percent",
+   "label": "abs Variance pct"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_approval",
+   "fieldtype": "Check",
+   "label": "Requires Approval"
+  },
+  {
+   "fieldname": "variance_cause",
+   "fieldtype": "Select",
+   "label": "Variance Cause",
+   "options": "Counting Error\nPicking Error\nReceiving Error\nTheft\nSystem Error\nOther"
+  },
+  {
+   "default": "0",
+   "fieldname": "approved",
+   "fieldtype": "Check",
+   "label": "Approved"
+  },
+  {
+   "fieldname": "approval_notes",
+   "fieldtype": "Text",
+   "label": "Approval Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "recount_required",
+   "fieldtype": "Check",
+   "label": "Recount Required"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:31:45.265734",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Cycle Count Item",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

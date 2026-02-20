@@ -1,0 +1,234 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-18 10:47:52.768981",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nldj",
+  "naming_series",
+  "vehicle",
+  "source_warehouse",
+  "column_break_sral",
+  "route_date",
+  "driver",
+  "section_break_xnwa",
+  "stops",
+  "section_break_zdcy",
+  "total_stops",
+  "load_weight_pct",
+  "estimated_duration_hrs",
+  "status",
+  "column_break_ktdp",
+  "total_weight_kg",
+  "load_volume_pct",
+  "planned_departure",
+  "optimisation_method",
+  "column_break_miwb",
+  "total_volume_cbm",
+  "estimated_distance_km",
+  "actual_departure",
+  "transport_execution",
+  "manual_override",
+  "section_break_axir",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_nldj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "DRT-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "DRT-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "route_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Route Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "OMS Vehicle Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sral",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_xnwa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stops",
+   "fieldtype": "Table",
+   "label": "Stops",
+   "options": "OMS Route Stop",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_zdcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_stops",
+   "fieldtype": "Int",
+   "label": "Total Stops",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_weight_kg",
+   "fieldtype": "Float",
+   "label": "Total Weight Kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_volume_cbm",
+   "fieldtype": "Float",
+   "label": "Total Volume Cbm",
+   "read_only": 1
+  },
+  {
+   "fieldname": "load_weight_pct",
+   "fieldtype": "Percent",
+   "label": "Load Weight Pct",
+   "read_only": 1
+  },
+  {
+   "fieldname": "load_volume_pct",
+   "fieldtype": "Percent",
+   "label": "Load Volume Pct",
+   "read_only": 1
+  },
+  {
+   "fieldname": "estimated_distance_km",
+   "fieldtype": "Float",
+   "label": "Estimated Distance Km",
+   "read_only": 1
+  },
+  {
+   "fieldname": "estimated_duration_hrs",
+   "fieldtype": "Float",
+   "label": "Estimated Duration Hrs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "planned_departure",
+   "fieldtype": "Datetime",
+   "label": "Planned Departure "
+  },
+  {
+   "fieldname": "column_break_ktdp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_miwb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_departure",
+   "fieldtype": "Datetime",
+   "label": "Actual Departure"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Select\nDraft\nOptimised\nApproved\nDispatched\nIn Transit\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "optimisation_method",
+   "fieldtype": "Select",
+   "label": "Optimisation Method",
+   "options": "Select\nNearest Neighbour\nSavings Algorithm\nManual"
+  },
+  {
+   "default": "0",
+   "fieldname": "manual_override",
+   "fieldtype": "Check",
+   "label": "Manual Override"
+  },
+  {
+   "fieldname": "transport_execution",
+   "fieldtype": "Link",
+   "label": "Transport Execution",
+   "options": "OMS Transport Execution"
+  },
+  {
+   "fieldname": "section_break_axir",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Delivery Route",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:19:48.858597",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "OMS Delivery Route",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

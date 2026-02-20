@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-19 10:48:32.244050",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "qty_packed",
+  "column_break_zbjy",
+  "batch_no",
+  "uom",
+  "column_break_rlwn",
+  "qty_to_pack",
+  "package_no",
+  "section_break_kjng",
+  "serial_numbers"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_packed",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Packed"
+  },
+  {
+   "fieldname": "column_break_zbjy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No.",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rlwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qty_to_pack",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty To Pack",
+   "reqd": 1
+  },
+  {
+   "fieldname": "package_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Package No.",
+   "options": "WMS Package",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_kjng",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "serial_numbers",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Serial Numbers"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-19 14:32:11.739815",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Packing List Item",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

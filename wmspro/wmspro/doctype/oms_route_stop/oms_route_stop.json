@@ -1,0 +1,167 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 10:48:30.132255",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sequence",
+  "delivery_address",
+  "shipment_weight_kg",
+  "has_hazmat",
+  "actual_arrival",
+  "actual_departure",
+  "column_break_spds",
+  "fulfillment_order",
+  "lattitude",
+  "shipment_volume_cbm",
+  "eta",
+  "etd",
+  "column_break_ndjk",
+  "destination_facility",
+  "longitude",
+  "has_cold_chain",
+  "stop_status",
+  "priority",
+  "pod_captured"
+ ],
+ "fields": [
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sequence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fulfillment_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fulfillment Order",
+   "options": "About Us Team Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_facility",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Destination Facility",
+   "options": "Warehouse Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delivery Address",
+   "options": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lattitude",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Lattitude"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "shipment_weight_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Shipment Weight Kg"
+  },
+  {
+   "fieldname": "shipment_volume_cbm",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Shipment Volume Cbm"
+  },
+  {
+   "fieldname": "column_break_spds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ndjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_cold_chain",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Has Cold Chain"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_hazmat",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Has Hazmat"
+  },
+  {
+   "fieldname": "eta",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "ETA"
+  },
+  {
+   "fieldname": "etd",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "ETD"
+  },
+  {
+   "fieldname": "actual_arrival",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Actual Arrival "
+  },
+  {
+   "fieldname": "actual_departure",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Actual Departure"
+  },
+  {
+   "fieldname": "stop_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stop Status",
+   "options": "Select\nPending\nEn Route\nArrived\nDelivered\nFailed\nSkipped"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Select\nStandard\nUrgent\nEmergency"
+  },
+  {
+   "default": "0",
+   "fieldname": "pod_captured",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Pod Captured"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-19 14:56:30.870670",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "OMS Route Stop",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,289 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-16 14:05:13.877283",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_coat",
+  "supplier",
+  "naming_series",
+  "supplier_name",
+  "purchase_order",
+  "column_break_oxta",
+  "company",
+  "warehouse",
+  "mode_of_transport",
+  "dock_assignment",
+  "column_break_cqvp",
+  "shipment_date",
+  "expected_arrival_date",
+  "expected_arrival_time",
+  "actual_arrival_date",
+  "section_break_jxjx",
+  "carrier",
+  "edi_856_reference",
+  "total_line_items",
+  "temperature_controlled",
+  "column_break_jtpr",
+  "supplier_asn_number",
+  "total_qty",
+  "status",
+  "hazmat",
+  "column_break_gyie",
+  "tracking_number",
+  "vehicle_number",
+  "seal_number",
+  "created_from_api",
+  "vehicle_details_section",
+  "bill_of_lading__awb",
+  "column_break_zfly",
+  "cold_chain_required",
+  "section_break_ofyv",
+  "advanced_shipment_notice_details",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_coat",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "link_filters": "[[\"Supplier\",\"disabled\",\"=\",0]]",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "column_break_oxta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipment_date",
+   "fieldtype": "Date",
+   "label": "Shipment Date"
+  },
+  {
+   "fieldname": "expected_arrival_date",
+   "fieldtype": "Date",
+   "label": "Expected Arrival Date"
+  },
+  {
+   "fieldname": "mode_of_transport",
+   "fieldtype": "Select",
+   "label": " Mode of Transport",
+   "options": "\nRoad\nRail\nAir\nSea"
+  },
+  {
+   "fieldname": "vehicle_details_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Details"
+  },
+  {
+   "fieldname": "bill_of_lading__awb",
+   "fieldtype": "Data",
+   "label": "Bill of Lading / AWB"
+  },
+  {
+   "fieldname": "column_break_zfly",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cold_chain_required",
+   "fieldtype": "Check",
+   "label": "Cold - Chain Required"
+  },
+  {
+   "fieldname": "section_break_ofyv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "advanced_shipment_notice_details",
+   "fieldtype": "Table",
+   "label": "Advanced Shipment Notice Details",
+   "options": "Advanced Shipment Notice Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Advanced Shipment Notice",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "ASN-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "ASN-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Purchase Order",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "expected_arrival_time",
+   "fieldtype": "Datetime",
+   "label": "Expected Arrival Time"
+  },
+  {
+   "fieldname": "actual_arrival_date",
+   "fieldtype": "Date",
+   "label": "Actual Arrival Date"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_cqvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jxjx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Data",
+   "label": "Carrier"
+  },
+  {
+   "fieldname": "column_break_jtpr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "label": "Tracking Number"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "label": "Vehicle Number"
+  },
+  {
+   "fieldname": "seal_number",
+   "fieldtype": "Data",
+   "label": "Seal Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "temperature_controlled",
+   "fieldtype": "Check",
+   "label": "Temperature Controlled"
+  },
+  {
+   "default": "0",
+   "fieldname": "hazmat",
+   "fieldtype": "Check",
+   "label": "Hazmat"
+  },
+  {
+   "fieldname": "supplier_asn_number",
+   "fieldtype": "Data",
+   "label": "Supplier ASN Number"
+  },
+  {
+   "fieldname": "edi_856_reference",
+   "fieldtype": "Data",
+   "label": "Edi 856 Reference"
+  },
+  {
+   "default": "0",
+   "fieldname": "created_from_api",
+   "fieldtype": "Check",
+   "label": "Created From API"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total QTY"
+  },
+  {
+   "fieldname": "total_line_items",
+   "fieldtype": "Int",
+   "label": "Total Line Items"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nConfirmed\nPartially Received\nReceived\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dock_assignment",
+   "fieldtype": "Link",
+   "label": "Dock Assignment",
+   "options": "WMS Dock",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gyie",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 17:25:16.061312",
+ "modified_by": "vedika.patil@erpdata.in",
+ "module": "WmsPro",
+ "name": "Advanced Shipment Notice",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sonali.kadam@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

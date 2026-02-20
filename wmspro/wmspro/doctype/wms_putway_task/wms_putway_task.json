@@ -1,0 +1,239 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-17 15:12:23.890893",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "grn_reference",
+  "naming_series",
+  "uom",
+  "from_warehouse",
+  "to_warehouse",
+  "from_bin",
+  "actual_bin",
+  "sujjested_bin",
+  "override_reason",
+  "created_offline",
+  "column_break_rzsl",
+  "item_code",
+  "batch_no",
+  "suggested_bin",
+  "serial_number",
+  "task_status",
+  "strategy",
+  "started_at",
+  "duration_minutes",
+  "notes",
+  "column_break_gzey",
+  "item_name",
+  "task_date",
+  "expiry_date",
+  "quantity",
+  "priority",
+  "assigned_to",
+  "completed_at",
+  "stock_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "grn_reference",
+   "fieldtype": "Link",
+   "label": "GRN Reference",
+   "options": "WMS Goods Receipt Note",
+   "reqd": 1
+  },
+  {
+   "default": "PAT-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PAT-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_warehouse",
+   "fieldtype": "Link",
+   "label": "From Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_bin",
+   "fieldtype": "Link",
+   "label": "From BIn",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "actual_bin",
+   "fieldtype": "Link",
+   "label": "Actual BIn",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "sujjested_bin",
+   "fieldtype": "Link",
+   "label": "Sujjested Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "override_reason",
+   "fieldtype": "Data",
+   "label": "Override Reason"
+  },
+  {
+   "default": "0",
+   "fieldname": "created_offline",
+   "fieldtype": "Check",
+   "label": "Created Offline"
+  },
+  {
+   "fieldname": "column_break_rzsl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch NO"
+  },
+  {
+   "fieldname": "suggested_bin",
+   "fieldtype": "Link",
+   "label": "Suggested Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "task_status",
+   "fieldtype": "Select",
+   "label": "Task Status",
+   "options": "\nDraft\nAssigned\nIn Progress\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "strategy",
+   "fieldtype": "Select",
+   "label": "Strategy",
+   "options": "ABC Slotting\nNearest Empty\nFEFO Zone\nCross-Dock\nTemperature Zone"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Float",
+   "label": "Duration Minutes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_gzey",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "task_date",
+   "fieldtype": "Date",
+   "label": "Task Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nUrgent"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "to_warehouse",
+   "fieldtype": "Link",
+   "label": "To Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:33.752498",
+ "modified_by": "sourabh.yelpale@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Putway Task",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

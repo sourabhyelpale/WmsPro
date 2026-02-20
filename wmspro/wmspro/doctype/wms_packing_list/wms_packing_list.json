@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-19 10:47:19.535042",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vnbn",
+  "company",
+  "naming_series",
+  "packing_date",
+  "column_break_pdru",
+  "outbound_shipment",
+  "pick_list",
+  "column_break_cjjy",
+  "packing_station",
+  "warehouse",
+  "section_break_uhtj",
+  "items",
+  "section_break_rysi",
+  "packages",
+  "section_break_glqe",
+  "total_packages",
+  "packed_by",
+  "column_break_jmsc",
+  "total_weight_kg",
+  "verified_by",
+  "column_break_qqbd",
+  "total_volume_cbm",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vnbn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "PKG-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series ",
+   "options": "PKG-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "packing_date",
+   "fieldtype": "Date",
+   "label": "Packing Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pdru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outbound_shipment",
+   "fieldtype": "Link",
+   "label": "Outbound Shipment",
+   "options": "WMS Outbound Shipment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pick_list",
+   "fieldtype": "Link",
+   "label": "Pick List",
+   "options": "WMS Pick List",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_cjjy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "packing_station",
+   "fieldtype": "Data",
+   "label": "Packing Station"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_uhtj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "WMS Packing List Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_rysi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "packages",
+   "fieldtype": "Table",
+   "label": "Packages",
+   "options": "WMS Package",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_glqe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_packages",
+   "fieldtype": "Int",
+   "label": "Total Packages"
+  },
+  {
+   "fieldname": "packed_by",
+   "fieldtype": "Link",
+   "label": "Packed By",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_jmsc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_weight_kg",
+   "fieldtype": "Float",
+   "label": "Total Weight KG"
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_qqbd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_volume_cbm",
+   "fieldtype": "Float",
+   "label": "Total Volume CBM"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPacking\nPacked\nVerified\nCancelled",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 15:44:27.670866",
+ "modified_by": "atharv.jadhav@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Packing List",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

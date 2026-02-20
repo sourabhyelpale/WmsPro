@@ -1,0 +1,280 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-02-18 14:04:04.646712",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_i1pc",
+  "amended_from",
+  "naming_series",
+  "company",
+  "fulfillment_type",
+  "requisition_order",
+  "distribution_order",
+  "column_break_ygov",
+  "source_warehouse",
+  "destination_facility",
+  "delivery_address",
+  "required_by_date",
+  "priority",
+  "section_break_fghg",
+  "items",
+  "section_break_pbco",
+  "column_break_aqkm",
+  "total_qty_required",
+  "column_break_nevr",
+  "total_qty_allocated",
+  "column_break_cdke",
+  "total_qty_dispatched",
+  "column_break_vrvm",
+  "total_qty_delivered",
+  "section_break_akii",
+  "allocation_complete",
+  "pick_list",
+  "outbound_shipment",
+  "delivery_note",
+  "column_break_aoux",
+  "optimal_source_evaluated",
+  "stock_entry",
+  "status",
+  "short_fulfil_approved_by",
+  "column_break_uxec",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_i1pc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OMS Fulfillment Order",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "FUL-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fulfillment_type",
+   "fieldtype": "Select",
+   "label": "Fulfillment Type",
+   "options": "Pull (Requisition)\nPush (Distribution)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requisition_order",
+   "fieldtype": "Link",
+   "label": "Requisition Order",
+   "options": "OMS Requisition Order"
+  },
+  {
+   "fieldname": "distribution_order",
+   "fieldtype": "Link",
+   "label": "Distribution Order",
+   "options": "OMS Distribution Order"
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_facility",
+   "fieldtype": "Link",
+   "label": "Destination Facility",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Link",
+   "label": "Delivery Address",
+   "options": "Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "required_by_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required By Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Standard\nUrgent\nEmergency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "OMS Fulfillment Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_qty_required",
+   "fieldtype": "Float",
+   "label": "Total qty Required"
+  },
+  {
+   "fieldname": "total_qty_allocated",
+   "fieldtype": "Float",
+   "label": "Total qty Allocated"
+  },
+  {
+   "fieldname": "total_qty_dispatched",
+   "fieldtype": "Float",
+   "label": "Total qty Dispatched"
+  },
+  {
+   "fieldname": "total_qty_delivered",
+   "fieldtype": "Float",
+   "label": "Total qty Delivered"
+  },
+  {
+   "default": "0",
+   "fieldname": "allocation_complete",
+   "fieldtype": "Check",
+   "label": "Allocation Complete"
+  },
+  {
+   "fieldname": "pick_list",
+   "fieldtype": "Link",
+   "label": "Pick List",
+   "options": "WMS Pick List"
+  },
+  {
+   "fieldname": "outbound_shipment",
+   "fieldtype": "Link",
+   "label": "Outbound Shipment",
+   "options": "WMS Outbound Shipment"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery Note",
+   "options": "Delivery Note"
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "default": "0",
+   "fieldname": "optimal_source_evaluated",
+   "fieldtype": "Check",
+   "label": "Optimal Source Evaluated"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nAllocated\nPick List Created\nPicking\nPacked\nDispatched\nDelivered\nShort Fulfilled\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "short_fulfil_approved_by",
+   "fieldtype": "Link",
+   "label": "Short Fulfil Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_aqkm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ygov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_fghg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_pbco",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nevr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cdke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vrvm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_akii",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_aoux",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uxec",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:18:05.960275",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "OMS Fulfillment Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{zone_name}",
+ "creation": "2026-02-19 10:44:27.042799",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zone_code",
+  "warehouse",
+  "storage_type",
+  "capacity_cbm",
+  "is_active",
+  "column_break_ctbs",
+  "zone_name",
+  "zone_type",
+  "abc_classification",
+  "is_pick_zone",
+  "is_reserved_zone"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "storage_type",
+   "fieldtype": "Link",
+   "label": "Storage Type",
+   "options": "WMS Storage Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity_cbm",
+   "fieldtype": "Float",
+   "label": "Capacity CBM"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_ctbs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zone_type",
+   "fieldtype": "Select",
+   "label": "Zone Type",
+   "options": "\nPick Zone\nReserve Storage\nBulk\nStaging\nQuarantine",
+   "reqd": 1
+  },
+  {
+   "fieldname": "abc_classification",
+   "fieldtype": "Select",
+   "label": "ABC Classification",
+   "options": "A\nB\nC\nAll"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_pick_zone",
+   "fieldtype": "Check",
+   "label": "Is Pick Zone"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_reserved_zone",
+   "fieldtype": "Check",
+   "label": "Is Reserved Zone"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 11:20:57.405718",
+ "modified_by": "sourabh.yelpale@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Zone",
+ "naming_rule": "Expression",
+ "owner": "sourabh.yelpale@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-17 14:54:18.011684",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inbound_receipt",
+  "dock_no",
+  "requires_qc",
+  "started_on",
+  "completed_on",
+  "barcode_scan",
+  "staging_bin",
+  "serial_number",
+  "column_break_mlfk",
+  "item_code",
+  "item_name",
+  "gtin",
+  "batch_no",
+  "expiry_date",
+  "warehouse",
+  "uom",
+  "stock_uom",
+  "conversion_factor",
+  "stock_qty_received",
+  "stock_qty_accepted",
+  "rate",
+  "amount",
+  "valuation_rate",
+  "column_break_tqrd",
+  "qty_expected",
+  "qty_received",
+  "qty_accepted",
+  "qty_rejected",
+  "assigned_to",
+  "qc_status",
+  "storage_location",
+  "rejection_reason",
+  "damage_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "inbound_receipt",
+   "fieldtype": "Link",
+   "label": "Inbound Receipt ",
+   "options": "WMS Goods Receipt Note"
+  },
+  {
+   "fieldname": "dock_no",
+   "fieldtype": "Data",
+   "label": "Dock No"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_qc",
+   "fieldtype": "Check",
+   "label": "Requires Qc"
+  },
+  {
+   "fieldname": "started_on",
+   "fieldtype": "Datetime",
+   "label": "Started On"
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Datetime",
+   "label": "Completed On"
+  },
+  {
+   "fieldname": "barcode_scan",
+   "fieldtype": "Data",
+   "label": "Barcode Scan"
+  },
+  {
+   "fieldname": "staging_bin",
+   "fieldtype": "Link",
+   "label": "Staging Bin",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "column_break_mlfk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "gtin",
+   "fieldtype": "Data",
+   "label": "GTIN"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch no.",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "column_break_tqrd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qty_expected",
+   "fieldtype": "Float",
+   "label": "Qty Expected"
+  },
+  {
+   "fieldname": "qty_received",
+   "fieldtype": "Float",
+   "label": "Qty Received"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "qty_accepted",
+   "fieldtype": "Float",
+   "label": "Qty Accepted"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Text",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "qty_rejected",
+   "fieldtype": "Float",
+   "label": "Qty Rejected"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "conversion_factor",
+   "fieldtype": "Float",
+   "label": "Conversion Factor"
+  },
+  {
+   "fieldname": "stock_qty_received",
+   "fieldtype": "Float",
+   "label": "Stock Qty Received"
+  },
+  {
+   "fieldname": "stock_qty_accepted",
+   "fieldtype": "Float",
+   "label": "Stock Qty Accepted"
+  },
+  {
+   "fieldname": "storage_location",
+   "fieldtype": "Link",
+   "label": "Storage Location",
+   "options": "WMS Bin"
+  },
+  {
+   "fieldname": "qc_status",
+   "fieldtype": "Select",
+   "label": "QC Status",
+   "options": "Pending\nPassed\nFailed\nPartial"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "damage_type",
+   "fieldtype": "Select",
+   "label": "Damage type",
+   "options": "None\nPackaging Only\nProduct Damaged\nBoth"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "valuation_rate",
+   "fieldtype": "Currency",
+   "label": "Valuation Rate"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-18 18:17:09.260454",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Inbound Task",
+ "owner": "vedika.patil@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-18 17:45:32.817369",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "qty_picked",
+  "uom",
+  "column_break_qdsd",
+  "item_name",
+  "qty_packed",
+  "sales_order_item",
+  "column_break_fuva",
+  "qty_ordered",
+  "qty_short",
+  "section_break_dewx",
+  "batch_nos_picked",
+  "section_break_nznq",
+  "pick_lists"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code ",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "qty_ordered",
+   "fieldtype": "Float",
+   "label": "Qty Ordered",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_picked",
+   "fieldtype": "Float",
+   "label": "Qty Picked"
+  },
+  {
+   "fieldname": "qty_packed",
+   "fieldtype": "Float",
+   "label": "Qty Packed"
+  },
+  {
+   "fieldname": "qty_short",
+   "fieldtype": "Float",
+   "label": "Qty Short"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "sales_order_item",
+   "fieldtype": "Data",
+   "label": "Sales Order Item"
+  },
+  {
+   "fieldname": "section_break_dewx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "batch_nos_picked",
+   "fieldtype": "Small Text",
+   "label": "Batch Nos. Picked"
+  },
+  {
+   "fieldname": "section_break_nznq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pick_lists",
+   "fieldtype": "Small Text",
+   "label": "Pick Lists"
+  },
+  {
+   "fieldname": "column_break_qdsd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fuva",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:07:13.819050",
+ "modified_by": "Administrator",
+ "module": "WmsPro",
+ "name": "WMS Shipment Item",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

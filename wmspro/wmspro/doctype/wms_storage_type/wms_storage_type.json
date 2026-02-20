@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:STOR-{storage_type_name}",
+ "creation": "2026-02-19 10:27:05.040924",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "storage_type_name",
+  "temperature_max_c",
+  "regulatory_code",
+  "column_break_fucx",
+  "short_code",
+  "humidity_min_",
+  "is_hazmat",
+  "requires_monitoring",
+  "column_break_qkko",
+  "temperature_in_c",
+  "humidity_max_",
+  "section_break_nifa",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "storage_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Storage Type Name",
+   "length": 100,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "temperature_max_c",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Temperature Max C"
+  },
+  {
+   "fieldname": "regulatory_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Regulatory Code "
+  },
+  {
+   "fieldname": "column_break_fucx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Short Code",
+   "length": 10,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "humidity_min_",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Humidity Min %"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_hazmat",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Hazmat"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_monitoring",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Requires Monitoring "
+  },
+  {
+   "fieldname": "column_break_qkko",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "temperature_in_c",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Temperature Min C"
+  },
+  {
+   "fieldname": "humidity_max_",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Humidity Max %"
+  },
+  {
+   "fieldname": "section_break_nifa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description "
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-19 12:11:01.541746",
+ "modified_by": "vedika.patil@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Storage Type",
+ "naming_rule": "Expression",
+ "owner": "atharv.jadhav@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,327 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2026-02-18 14:12:42.101732",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_cxfu",
+  "company",
+  "naming_series",
+  "asn_reference",
+  "warehouse",
+  "has_discrepancy",
+  "discrepancy_type",
+  "discrepancy_notes",
+  "discrepancy_photo",
+  "created_offline",
+  "offline_device_id",
+  "scynced_on",
+  "status",
+  "column_break_ehyt",
+  "posting_date",
+  "posting_time",
+  "purchace_order",
+  "received_by",
+  "quality_inspection_required",
+  "quality_inspection",
+  "quarantine_warehouse",
+  "temperature_recorded",
+  "temperature_compliant",
+  "auto_create_putaway",
+  "putaway_strategy",
+  "total_qty_received",
+  "total_qty_accepted",
+  "total_qty_rejected",
+  "amended_from",
+  "column_break_hhwz",
+  "receipt_type",
+  "supplier",
+  "supplier_name",
+  "supplier_delivery_note",
+  "supervisor_approval_required",
+  "supervisor_approval",
+  "approval_notes",
+  "overall_variance_pct",
+  "puchase_receipt",
+  "stock_entry",
+  "section_break_ihnr",
+  "wms_grn_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_cxfu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WMS Goods Receipt Note",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "GRN-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "GRN-.YYYY.-.#####",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ehyt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "label": "Posting Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_type",
+   "fieldtype": "Select",
+   "label": "Receipt Type",
+   "options": "Standard\nBlind\nManual\nOffline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asn_reference",
+   "fieldtype": "Link",
+   "label": "ASN Reference",
+   "options": "Advanced Shipment Notice"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "supplier_delivery_note",
+   "fieldtype": "Data",
+   "label": "Supplier Delivery Note"
+  },
+  {
+   "fieldname": "purchace_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "quality_inspection_required",
+   "fieldtype": "Check",
+   "label": "Quality Inspection Required"
+  },
+  {
+   "fieldname": "quality_inspection",
+   "fieldtype": "Link",
+   "label": "Quality Inspection",
+   "options": "Wms Qc Task"
+  },
+  {
+   "fieldname": "quarantine_warehouse",
+   "fieldtype": "Link",
+   "label": "Quarantine Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "temperature_recorded",
+   "fieldtype": "Float",
+   "label": "Temperature Recorded"
+  },
+  {
+   "default": "0",
+   "fieldname": "temperature_compliant",
+   "fieldtype": "Check",
+   "label": "Temperature compliant"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_discrepancy",
+   "fieldtype": "Check",
+   "label": "Has Discrepancy"
+  },
+  {
+   "fieldname": "discrepancy_type",
+   "fieldtype": "Select",
+   "label": "Discrepancy Type",
+   "options": "Quantity\nQuality\nWrong Item\nDamage\nExpiry"
+  },
+  {
+   "fieldname": "discrepancy_notes",
+   "fieldtype": "Text",
+   "label": "Discrepancy Notes"
+  },
+  {
+   "fieldname": "discrepancy_photo",
+   "fieldtype": "Attach",
+   "label": "Discrepancy Photos"
+  },
+  {
+   "default": "0",
+   "fieldname": "supervisor_approval_required",
+   "fieldtype": "Check",
+   "label": "Supervisor Approval Required"
+  },
+  {
+   "fieldname": "supervisor_approval",
+   "fieldtype": "Link",
+   "label": "Supervisor Approval",
+   "options": "User"
+  },
+  {
+   "fieldname": "approval_notes",
+   "fieldtype": "Text",
+   "label": "Approval Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_putaway",
+   "fieldtype": "Check",
+   "label": "Auto Create Putaway"
+  },
+  {
+   "fieldname": "putaway_strategy",
+   "fieldtype": "Select",
+   "label": "Putaway Strategy",
+   "options": "ABC Slotting\nNearest Empty\nFEFO Zone\nCross-Dock"
+  },
+  {
+   "fieldname": "total_qty_received",
+   "fieldtype": "Float",
+   "label": "Total Qty Received"
+  },
+  {
+   "fieldname": "total_qty_accepted",
+   "fieldtype": "Float",
+   "label": "Total Qty Accepted"
+  },
+  {
+   "fieldname": "total_qty_rejected",
+   "fieldtype": "Float",
+   "label": "Total Qty Rejected"
+  },
+  {
+   "fieldname": "overall_variance_pct",
+   "fieldtype": "Percent",
+   "label": "Overall Variance Pct."
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "default": "0",
+   "fieldname": "created_offline",
+   "fieldtype": "Check",
+   "label": "Created Offline"
+  },
+  {
+   "fieldname": "offline_device_id",
+   "fieldtype": "Data",
+   "label": "Offline Device ID"
+  },
+  {
+   "fieldname": "scynced_on",
+   "fieldtype": "Datetime",
+   "label": "Scynced On"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReceived\nQC Pending\nPartially Accepted Completed\nRejected",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hhwz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "puchase_receipt",
+   "fieldtype": "Link",
+   "label": "Puchase Receipt",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "section_break_ihnr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "wms_grn_item",
+   "fieldtype": "Table",
+   "label": "WMS GRN Item",
+   "options": "WMS Inbound Task"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-19 11:10:36.627831",
+ "modified_by": "sourabh.yelpale@erpdata.in",
+ "module": "WmsPro",
+ "name": "WMS Goods Receipt Note",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "sourabh.yelpale@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
