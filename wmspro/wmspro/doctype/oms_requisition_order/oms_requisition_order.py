@@ -11,6 +11,7 @@ class OMSRequisitionOrder(Document):
     def validate(self):
         self.calculate_totals()
 
+
     def on_submit(self):
         self.calculate_totals()
         self.create_fulfillment_order()
@@ -18,8 +19,8 @@ class OMSRequisitionOrder(Document):
         self.create_material_request()
         self.create_consumption_forecast()
 
-    def calculate_totals(self):
 
+    def calculate_totals(self):
         total_qty = 0
         total_value = 0
 
@@ -30,10 +31,25 @@ class OMSRequisitionOrder(Document):
         self.total_qty = total_qty
         self.total_value = total_value
 
-    def create_fulfillment_order(self):
 
+
+
+
+    def create_fulfillment_order(self):
         if self.fulfillment_order:
             return
+
+        self.calculate_totals()
+
+        item_codes = [d.item_code for d in self.items if d.item_code]
+
+        item_details = frappe.get_all(
+            "Item",
+            filters={"name": ["in", item_codes]},
+            fields=["name", "item_name", "stock_uom"]
+        )
+
+        item_map = {d.name: d for d in item_details}
 
         fulfillment = frappe.new_doc("OMS Fulfillment Order")
         fulfillment.naming_series = "FUL-.YYYY.-.#####"
@@ -46,22 +62,39 @@ class OMSRequisitionOrder(Document):
         fulfillment.required_by_date = self.required_by_date
         fulfillment.priority = self.priority
         fulfillment.status = "Draft"
+        fulfillment.total_qty_required = self.total_qty
 
         for row in self.items:
+            item = item_map.get(row.item_code)
+
             fulfillment.append("items", {
                 "item_code": row.item_code,
+                "item_name": item.item_name if item else "",
                 "qty_required": row.qty_requested,
-                "uom": row.uom,
-                "stock_uom": row.stock_uom
+                "uom": row.uom or (item.stock_uom if item else ""),
+                "stock_uom": item.stock_uom if item else ""
             })
 
         fulfillment.insert(ignore_permissions=True)
         self.db_set("fulfillment_order", fulfillment.name)
 
-    def create_distribution_order(self):
 
+
+
+    def create_distribution_order(self):
         if self.distribution_order:
             return
+
+        item_codes = [d.item_code for d in self.items if d.item_code]
+
+        item_details = frappe.get_all(
+            "Item",
+            filters={"name": ["in", item_codes]},
+            fields=["name", "item_name", "stock_uom"]
+        )
+
+        item_map = {d.name: d for d in item_details}
+
 
         distribution = frappe.new_doc("OMS Distribution Order")
         distribution.naming_series = "DST-.YYYY.-.#####"
@@ -72,21 +105,36 @@ class OMSRequisitionOrder(Document):
         distribution.status = "Draft"
 
         for row in self.items:
+            item = item_map.get(row.item_code)
+
             distribution.append("items", {
                 "item_code": row.item_code,
+                "item_name": item.item_name if item else "",
                 "facility": self.requesting_facility,
                 "qty_to_distribute": row.qty_requested,
-                "uom": row.uom,
-                "stock_uom": row.stock_uom
+                "uom": row.uom or (item.stock_uom if item else ""),
+                "stock_uom": item.stock_uom if item else ""
             })
 
         distribution.insert(ignore_permissions=True)
         self.db_set("distribution_order", distribution.name)
 
-    def create_material_request(self):
 
+
+
+    def create_material_request(self):
         if self.material_request:
             return
+
+        item_codes = [d.item_code for d in self.items if d.item_code]
+
+        item_details = frappe.get_all(
+            "Item",
+            filters={"name": ["in", item_codes]},
+            fields=["name", "item_name", "stock_uom"]
+        )
+
+        item_map = {d.name: d for d in item_details}
 
         mr = frappe.new_doc("Material Request")
         mr.material_request_type = "Material Transfer"
@@ -114,10 +162,13 @@ class OMSRequisitionOrder(Document):
             mr.cost_center = default_cost_center
 
         for row in self.items:
+            item = item_map.get(row.item_code)
+
             mr.append("items", {
                 "item_code": row.item_code,
+                "item_name": item.item_name if item else "",
                 "qty": row.qty_requested,
-                "uom": row.uom,
+                "uom": row.uom or (item.stock_uom if item else ""),
                 "conversion_factor": 1,
                 "schedule_date": self.required_by_date
             })
@@ -125,8 +176,10 @@ class OMSRequisitionOrder(Document):
         mr.insert(ignore_permissions=True)
         self.db_set("material_request", mr.name)
 
-    def create_consumption_forecast(self):
 
+
+
+    def create_consumption_forecast(self):
         if self.consumption_reference:
             return
 
@@ -141,7 +194,9 @@ class OMSRequisitionOrder(Document):
             forecast.forecast_qty = row.qty_requested
             forecast.reorder_point = row.qty_requested
             forecast.requisition_generated = self.name
+
             forecast.insert(ignore_permissions=True)
             forecast.submit()
+
             self.db_set("consumption_reference", forecast.name)
             break

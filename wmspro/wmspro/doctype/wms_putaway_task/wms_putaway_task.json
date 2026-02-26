@@ -13,7 +13,6 @@
   "to_warehouse",
   "from_bin",
   "actual_bin",
-  "sujjested_bin",
   "override_reason",
   "created_offline",
   "column_break_rzsl",
@@ -81,12 +80,6 @@
    "options": "WMS Bin"
   },
   {
-   "fieldname": "sujjested_bin",
-   "fieldtype": "Link",
-   "label": "Sujjested Bin",
-   "options": "WMS Bin"
-  },
-  {
    "fieldname": "override_reason",
    "fieldtype": "Data",
    "label": "Override Reason"
@@ -111,7 +104,7 @@
   {
    "fieldname": "batch_no",
    "fieldtype": "Data",
-   "label": "Batch NO"
+   "label": "Batch No."
   },
   {
    "fieldname": "suggested_bin",
@@ -211,10 +204,10 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-18 18:18:33.752498",
+ "modified": "2026-02-26 14:35:45.746642",
  "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
- "name": "WMS Putway Task",
+ "name": "WMS Putaway Task",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "vedika.patil@erpdata.in",
  "permissions": [

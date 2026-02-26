@@ -61,6 +61,7 @@
    "reqd": 1
   },
   {
+   "fetch_from": "supplier.supplier_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
    "label": "Supplier Name"
@@ -170,8 +171,9 @@
   },
   {
    "fieldname": "carrier",
-   "fieldtype": "Data",
-   "label": "Carrier"
+   "fieldtype": "Link",
+   "label": "Carrier",
+   "options": "WMS Carrier"
   },
   {
    "fieldname": "column_break_jtpr",
@@ -260,8 +262,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-19 17:25:16.061312",
- "modified_by": "vedika.patil@erpdata.in",
+ "modified": "2026-02-26 11:34:47.830694",
+ "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
  "name": "Advanced Shipment Notice",
  "naming_rule": "By \"Naming Series\" field",

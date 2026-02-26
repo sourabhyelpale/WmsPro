@@ -7,17 +7,23 @@ frappe.ui.form.on('Advanced Shipment Notice', {
     },
     
     before_submit: function(frm) {
+
         console.log("=== ASN SUBMISSION STARTED ===");
+
+        if (!frm.doc.warehouse) {
+            frappe.throw("Please select Warehouse before submitting ASN");
+        }
+
+        if (!frm.doc.advanced_shipment_notice_details || 
+            frm.doc.advanced_shipment_notice_details.length === 0) {
+            frappe.throw("Please add at least one item before submitting ASN");
+        }
+
         console.log("ASN Name:", frm.doc.name);
         console.log("Supplier:", frm.doc.supplier);
         console.log("Company:", frm.doc.company);
         console.log("Warehouse:", frm.doc.warehouse);
         console.log("Purchase Order:", frm.doc.purchase_order);
-        console.log("Items count:", frm.doc.advanced_shipment_notice_details ? frm.doc.advanced_shipment_notice_details.length : 0);
-        
-        if (frm.doc.advanced_shipment_notice_details) {
-            console.log("Items:", frm.doc.advanced_shipment_notice_details);
-        }
     },
     
     after_save: function(frm) {
@@ -110,6 +116,8 @@ frappe.ui.form.on('Advanced Shipment Notice', {
                         row.item_code = item.item_code;
                         row.description = item.description;
                         row.ordered_qty = pending_qty;
+                        row.expected_qty = pending_qty; 
+                        row.stock_uom = item.stock_uom;      
                     }
                 });
 

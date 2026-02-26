@@ -28,7 +28,8 @@
   "verified_by",
   "column_break_qqbd",
   "total_volume_cbm",
-  "status"
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
@@ -73,8 +74,7 @@
    "fieldname": "pick_list",
    "fieldtype": "Link",
    "label": "Pick List",
-   "options": "WMS Pick List",
-   "reqd": 1
+   "options": "WMS Pick List"
   },
   {
    "fieldname": "column_break_cjjy",
@@ -159,14 +159,24 @@
    "label": "Status",
    "options": "Draft\nPacking\nPacked\nVerified\nCancelled",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WMS Packing List",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-19 15:44:27.670866",
- "modified_by": "atharv.jadhav@erpdata.in",
+ "modified": "2026-02-26 12:36:23.164694",
+ "modified_by": "sanket.lohar@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Packing List",
  "naming_rule": "By \"Naming Series\" field",

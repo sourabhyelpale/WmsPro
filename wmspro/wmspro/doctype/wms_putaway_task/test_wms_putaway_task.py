@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestWMSPutwayTask(FrappeTestCase):
+class TestWMSPutawayTask(FrappeTestCase):
 	pass

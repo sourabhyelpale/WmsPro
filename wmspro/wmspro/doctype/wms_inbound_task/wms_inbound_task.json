@@ -7,6 +7,7 @@
  "field_order": [
   "inbound_receipt",
   "dock_no",
+  "gtin",
   "requires_qc",
   "started_on",
   "completed_on",
@@ -16,29 +17,29 @@
   "column_break_mlfk",
   "item_code",
   "item_name",
-  "gtin",
   "batch_no",
-  "expiry_date",
-  "warehouse",
-  "uom",
   "stock_uom",
+  "uom",
+  "assigned_to",
+  "storage_location",
+  "warehouse",
   "conversion_factor",
   "stock_qty_received",
   "stock_qty_accepted",
-  "rate",
-  "amount",
   "valuation_rate",
   "column_break_tqrd",
   "qty_expected",
   "qty_received",
   "qty_accepted",
   "qty_rejected",
-  "assigned_to",
+  "expiry_date",
+  "manufacturing_date",
   "qc_status",
-  "storage_location",
+  "mrp",
+  "rate",
+  "amount",
   "rejection_reason",
-  "damage_type",
-  "manufacturing_date"
+  "damage_type"
  ],
  "fields": [
   {
@@ -89,9 +90,11 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Item Code",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -104,28 +107,35 @@
    "label": "GTIN"
   },
   {
+   "columns": 1,
    "fieldname": "batch_no",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Batch no.",
-   "options": "Batch"
+   "options": "Batch",
+   "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Expiry Date"
+   "in_list_view": 1,
+   "label": "Expiry Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_tqrd",
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "qty_expected",
    "fieldtype": "Float",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Qty Expected"
+   "label": "Qty Expected",
+   "reqd": 1
   },
   {
    "fieldname": "qty_received",
@@ -166,10 +176,13 @@
    "options": "UOM"
   },
   {
+   "columns": 1,
    "fieldname": "stock_uom",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Stock UOM",
-   "options": "UOM"
+   "options": "UOM",
+   "reqd": 1
   },
   {
    "fieldname": "conversion_factor",
@@ -210,13 +223,17 @@
    "options": "None\nPackaging Only\nProduct Damaged\nBoth"
   },
   {
+   "columns": 1,
    "fieldname": "rate",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Rate"
   },
   {
+   "columns": 1,
    "fieldname": "amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Amount"
   },
   {
@@ -228,14 +245,22 @@
    "fieldname": "manufacturing_date",
    "fieldtype": "Date",
    "label": "Manufacturing Date"
+  },
+  {
+   "columns": 1,
+   "fieldname": "mrp",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "MRP",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-20 12:48:18.590268",
- "modified_by": "vedika.patil@erpdata.in",
+ "modified": "2026-02-26 11:10:41.325330",
+ "modified_by": "Administrator",
  "module": "WmsPro",
  "name": "WMS Inbound Task",
  "owner": "vedika.patil@erpdata.in",

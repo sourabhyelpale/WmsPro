@@ -44,7 +44,8 @@
   "supervisor_approval",
   "approval_notes",
   "overall_variance_pct",
-  "puchase_receipt",
+  "purchase_receipt",
+  "purchase_order",
   "stock_entry",
   "section_break_ihnr",
   "wms_grn_item"
@@ -117,6 +118,7 @@
    "options": "Supplier"
   },
   {
+   "fetch_from": "supplier.supplier_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
    "label": "Supplier Name"
@@ -135,7 +137,7 @@
   {
    "fieldname": "warehouse",
    "fieldtype": "Link",
-   "label": "warehouse",
+   "label": "Warehouse",
    "options": "Warehouse"
   },
   {
@@ -278,12 +280,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "puchase_receipt",
-   "fieldtype": "Link",
-   "label": "Puchase Receipt",
-   "options": "Purchase Receipt"
-  },
-  {
    "fieldname": "section_break_ihnr",
    "fieldtype": "Section Break"
   },
@@ -292,13 +288,25 @@
    "fieldtype": "Table",
    "label": "WMS GRN Item",
    "options": "WMS Inbound Task"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-20 13:01:00.131593",
+ "modified": "2026-02-26 12:39:27.977788",
  "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Goods Receipt Note",

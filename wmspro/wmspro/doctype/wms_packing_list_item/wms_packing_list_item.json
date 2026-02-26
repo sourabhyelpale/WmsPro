@@ -64,10 +64,9 @@
   },
   {
    "fieldname": "package_no",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Package No.",
-   "options": "WMS Package",
    "reqd": 1
   },
   {
@@ -85,8 +84,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-19 14:32:11.739815",
- "modified_by": "atharv.jadhav@erpdata.in",
+ "modified": "2026-02-26 12:20:07.084109",
+ "modified_by": "sanket.lohar@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Packing List Item",
  "owner": "atharv.jadhav@erpdata.in",

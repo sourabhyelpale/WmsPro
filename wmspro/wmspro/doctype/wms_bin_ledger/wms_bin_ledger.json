@@ -1,25 +1,33 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-02-18 17:22:52.996254",
+ "autoname": "naming_series:",
+ "creation": "2026-02-26 10:44:48.516731",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "posting_date",
-  "item_code",
-  "voucher_type",
-  "created_by",
-  "column_break_wuqj",
   "posting_time",
+  "posting_datetime",
+  "voucher_type",
+  "voucher_no",
+  "is_reservation",
+  "is_cancelled",
+  "naming_series",
+  "column_break_wuqj",
+  "item_code",
+  "item_name",
   "bin_location",
   "batch_no",
-  "quantity_change",
+  "zone",
+  "stock_uom",
   "column_break_flnj",
+  "quantity_change",
   "warehouse",
   "serial_no",
-  "voucher_no",
-  "section_break_oxgs",
-  "remarks"
+  "balance_qty",
+  "reserved_qty",
+  "available_qty"
  ],
  "fields": [
   {
@@ -30,6 +38,52 @@
    "reqd": 1
   },
   {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "label": "Posting Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_datetime",
+   "fieldtype": "Datetime",
+   "label": "Posting Datetime"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Data",
+   "label": "Voucher No.",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_reservation",
+   "fieldtype": "Check",
+   "label": "Is Reservation"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled"
+  },
+  {
+   "default": "BL-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_wuqj",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "item_code",
    "fieldtype": "Link",
    "label": "Item Code",
@@ -37,27 +91,9 @@
    "reqd": 1
   },
   {
-   "fieldname": "voucher_type",
+   "fieldname": "item_name",
    "fieldtype": "Data",
-   "label": "Voucher Type",
-   "reqd": 1
-  },
-  {
-   "fieldname": "created_by",
-   "fieldtype": "Link",
-   "label": "Created By",
-   "options": "User",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_wuqj",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "posting_time",
-   "fieldtype": "Time",
-   "label": "Posting Time",
-   "reqd": 1
+   "label": "Item Name"
   },
   {
    "fieldname": "bin_location",
@@ -73,14 +109,27 @@
    "options": "Batch"
   },
   {
-   "fieldname": "quantity_change",
-   "fieldtype": "Float",
-   "label": "Quantity Change",
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone",
+   "options": "WMS Zone"
+  },
+  {
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM",
    "reqd": 1
   },
   {
    "fieldname": "column_break_flnj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity_change",
+   "fieldtype": "Float",
+   "label": "Quantity Change",
+   "reqd": 1
   },
   {
    "fieldname": "warehouse",
@@ -95,43 +144,46 @@
    "label": "Serial No"
   },
   {
-   "fieldname": "voucher_no",
-   "fieldtype": "Data",
-   "label": "Voucher No.",
+   "fieldname": "balance_qty",
+   "fieldtype": "Float",
+   "label": "Balance Qty",
    "reqd": 1
   },
   {
-   "fieldname": "section_break_oxgs",
-   "fieldtype": "Section Break"
+   "fieldname": "reserved_qty",
+   "fieldtype": "Float",
+   "label": "Reserved Qty"
   },
   {
-   "fieldname": "remarks",
-   "fieldtype": "Text",
-   "label": "Remarks"
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "label": "Available Qty"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "issingle": 1,
  "links": [],
- "modified": "2026-02-18 18:17:08.861004",
+ "modified": "2026-02-26 10:47:40.829052",
  "modified_by": "Administrator",
  "module": "WmsPro",
  "name": "WMS Bin Ledger",
- "owner": "atharv.jadhav@erpdata.in",
+ "owner": "Administrator",
  "permissions": [
   {
    "create": 1,
    "delete": 1,
    "email": 1,
+   "export": 1,
    "print": 1,
    "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
   }
  ],
  "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

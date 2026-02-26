@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:carrier_name",
  "creation": "2026-02-19 10:39:09.042452",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -112,10 +113,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 11:07:13.335236",
- "modified_by": "Administrator",
+ "modified": "2026-02-26 12:02:53.193181",
+ "modified_by": "sourabh.yelpale@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Carrier",
+ "naming_rule": "By fieldname",
  "owner": "atharv.jadhav@erpdata.in",
  "permissions": [
   {
