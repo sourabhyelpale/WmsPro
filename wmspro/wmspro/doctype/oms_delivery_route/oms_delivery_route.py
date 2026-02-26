@@ -6,18 +6,8 @@ from frappe.model.document import Document
 from frappe.utils import now_datetime
 
 
-
-
-
-# import frappe
-# from frappe.model.document import Document
-
-
 class OMSDeliveryRoute(Document):
 
-    # -----------------------------------------------------
-    # VALIDATION
-    # -----------------------------------------------------
     def validate(self):
         self.calculate_totals()
 
@@ -33,17 +23,11 @@ class OMSDeliveryRoute(Document):
             frappe.throw("Vehicle Overloaded (Volume exceeds capacity)")
 
 
-    # -----------------------------------------------------
-    # ON SUBMIT
-    # -----------------------------------------------------
     def on_submit(self):
         trx = self.create_transport_execution()
         self.assign_to_driver(trx)
 
 
-    # -----------------------------------------------------
-    # CREATE OMS TRANSPORT EXECUTION (TRX)
-    # -----------------------------------------------------
     def create_transport_execution(self):
 
         existing = frappe.db.exists(
@@ -67,15 +51,11 @@ class OMSDeliveryRoute(Document):
         return trx
 
 
-    # -----------------------------------------------------
-    # ASSIGN TO DRIVER + SYSTEM NOTIFICATION
-    # -----------------------------------------------------
     def assign_to_driver(self, trx):
 
         if not self.driver:
             return
 
-        # 1️⃣ Create ToDo
         frappe.get_doc({
             "doctype": "ToDo",
             "allocated_to": self.driver,
@@ -85,7 +65,6 @@ class OMSDeliveryRoute(Document):
             "status": "Open"
         }).insert(ignore_permissions=True)
 
-        # 2️⃣ Create Bell Notification
         frappe.get_doc({
             "doctype": "Notification Log",
             "subject": "New Delivery Route Assigned",
@@ -96,7 +75,6 @@ class OMSDeliveryRoute(Document):
             "from_user": frappe.session.user
         }).insert(ignore_permissions=True)
 
-        # 3️⃣ Realtime popup (if driver online)
         frappe.publish_realtime(
             event="msgprint",
             message=f"New Route {self.name} assigned to you.",
@@ -104,9 +82,6 @@ class OMSDeliveryRoute(Document):
         )
 
 
-    # -----------------------------------------------------
-    # CALCULATE TOTALS
-    # -----------------------------------------------------
     def calculate_totals(self):
 
         total_stops = len(self.stops or [])

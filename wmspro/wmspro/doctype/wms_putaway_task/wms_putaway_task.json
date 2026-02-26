@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:naming_series",
- "creation": "2026-02-17 15:12:23.890893",
+ "creation": "2026-02-26 17:44:46.211383",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -204,12 +204,12 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-26 14:35:45.746642",
- "modified_by": "sourabh.yelpale@erpdata.in",
+ "modified": "2026-02-26 17:44:46.211383",
+ "modified_by": "sahil.sawant@erpdata.in",
  "module": "WmsPro",
  "name": "WMS Putaway Task",
  "naming_rule": "By \"Naming Series\" field",
- "owner": "vedika.patil@erpdata.in",
+ "owner": "sahil.sawant@erpdata.in",
  "permissions": [
   {
    "create": 1,

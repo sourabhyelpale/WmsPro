@@ -6,9 +6,6 @@ from wmspro.wmspro.bin_ledger import create_bin_ledger_entry
 
 class WMSGoodsReceiptNote(Document):
 
-    # ----------------------------------------
-    # 1️⃣ When GRN is Created → Create PR Draft
-    # ----------------------------------------
     def after_insert(self):
 
         pr = frappe.new_doc("Purchase Receipt")
@@ -30,10 +27,13 @@ class WMSGoodsReceiptNote(Document):
             pr.append("items", {
                 "item_code": item.item_code,
                 "item_name": item.item_name,
+                "uom": item.stock_uom,
                 "qty": qty,
                 "conversion_factor": 1,
+                "custom_user_batch_no" : item.batch_no,
                 "stock_uom": item.stock_uom,
                 "rate": item.rate,
+                "custom_mrp":item.mrp,
                 "warehouse": self.warehouse
             })
 
@@ -45,11 +45,6 @@ class WMSGoodsReceiptNote(Document):
         frappe.msgprint(f"Purchase Receipt {pr.name} Created")
 
 
-    # ----------------------------------------
-    # 2️⃣ When GRN is Submitted
-    #    → Submit PR
-    #    → Create Bin Ledger
-    # ----------------------------------------
     def on_submit(self):
 
         # ---- Submit Purchase Receipt ----
@@ -129,9 +124,25 @@ class WMSGoodsReceiptNote(Document):
         return staging_bin
 
 
+
 def get_suggested_bin(item_code, warehouse):
 
-    bin_name = frappe.db.get_value(
+    # Try to find bin already storing this item
+    existing_bin = frappe.db.get_value(
+        "WMS Bin Ledger",
+        {
+            "item_code": item_code,
+            "warehouse": warehouse
+        },
+        "bin_location",
+        order_by="posting_datetime desc"
+    )
+
+    if existing_bin:
+        return existing_bin
+
+    # Otherwise return any storage bin
+    return frappe.db.get_value(
         "WMS Bin",
         {
             "warehouse": warehouse,
@@ -139,8 +150,3 @@ def get_suggested_bin(item_code, warehouse):
         },
         "name"
     )
-
-    if not bin_name:
-        frappe.throw("No storage bin configured")
-
-    return bin_name

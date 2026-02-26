@@ -100,7 +100,7 @@
    "fieldname": "requesting_facility",
    "fieldtype": "Link",
    "label": "Requesting Facility",
-   "options": "Warehouse",
+   "options": "Facility",
    "reqd": 1
   },
   {
@@ -114,7 +114,7 @@
    "fieldname": "source_facility",
    "fieldtype": "Link",
    "label": "Source Facility",
-   "options": "Warehouse"
+   "options": "Facility"
   },
   {
    "fieldname": "column_break_euzf",
@@ -257,11 +257,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-19 15:38:23.868624",
- "modified_by": "sanket.lohar@erpdata.in",
+ "modified": "2026-02-26 16:18:45.319181",
+ "modified_by": "sahil.sawant@erpdata.in",
  "module": "WmsPro",
  "name": "OMS Requisition Order",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "sahil.sawant@erpdata.in",
  "permissions": [
   {

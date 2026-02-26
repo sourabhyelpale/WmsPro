@@ -9,11 +9,12 @@
 
 
 
+
+
+
+
 frappe.ui.form.on('OMS Delivery Route', {
 
-    // -----------------------------
-    // Vehicle → Auto Fetch Driver
-    // -----------------------------
     vehicle: function(frm) {
 
         if (!frm.doc.vehicle) {
@@ -40,11 +41,6 @@ frappe.ui.form.on('OMS Delivery Route', {
 
 });
 
-
-// ==============================================
-// Child Table: OMS Route Stop
-// Fulfillment Order → Auto Delivery Address
-// ==============================================
 
 frappe.ui.form.on('OMS Route Stop', {
 
@@ -83,10 +79,6 @@ frappe.ui.form.on('OMS Route Stop', {
 
 
 
-// ==============================================
-// PARENT: OMS Delivery Route
-// ==============================================
-
 frappe.ui.form.on('OMS Delivery Route', {
 
     vehicle: function(frm) {
@@ -99,10 +91,6 @@ frappe.ui.form.on('OMS Delivery Route', {
 
 });
 
-
-// ==============================================
-// CHILD TABLE: OMS Route Stop
-// ==============================================
 
 frappe.ui.form.on('OMS Route Stop', {
 
@@ -125,9 +113,6 @@ frappe.ui.form.on('OMS Route Stop', {
 });
 
 
-// ==============================================
-// COMMON CALCULATION FUNCTION
-// ==============================================
 
 function calculate_totals(frm) {
 

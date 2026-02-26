@@ -1,0 +1,254 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Facility.warehouse.-.#####",
+ "creation": "2026-02-26 16:13:10.675590",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1ped",
+  "column_break_rmes",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "parent_facility",
+  "warehouse",
+  "catchment_population_capture_section",
+  "catchment_population",
+  "column_break_muxf",
+  "catchment_area_type",
+  "geographic_coordinates_section",
+  "latitude",
+  "column_break_xhuv",
+  "longitude",
+  "global_location_number_gln_mapping_section",
+  "gln_code",
+  "contact_person",
+  "working_hours",
+  "column_break_nott",
+  "national_location_code",
+  "facility_characteristics",
+  "storage_capacity",
+  "column_break_plth",
+  "regulatory_registration_number",
+  "responsible_officer",
+  "cold_chain_availability",
+  "operational_mode_configuration_section",
+  "select_svgy",
+  "section_break_eual",
+  "facility_level_numbering_series",
+  "column_break_jhzc",
+  "dynamic_naming_series_pattern"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1ped",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_rmes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "Facility"
+  },
+  {
+   "fieldname": "parent_facility",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent Facility",
+   "options": "Facility"
+  },
+  {
+   "fieldname": "catchment_population_capture_section",
+   "fieldtype": "Section Break",
+   "label": "Catchment Population Capture"
+  },
+  {
+   "fieldname": "catchment_population",
+   "fieldtype": "Data",
+   "label": "Catchment Population"
+  },
+  {
+   "fieldname": "column_break_muxf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "catchment_area_type",
+   "fieldtype": "Select",
+   "label": "Catchment Area Type ",
+   "options": "\nUrban\nRural\nIsland"
+  },
+  {
+   "fieldname": "geographic_coordinates_section",
+   "fieldtype": "Section Break",
+   "label": "Geographic Coordinates"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "column_break_xhuv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "global_location_number_gln_mapping_section",
+   "fieldtype": "Section Break",
+   "label": "Global Location Number (GLN) Mapping"
+  },
+  {
+   "fieldname": "gln_code",
+   "fieldtype": "Data",
+   "label": "GLN Code"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "working_hours",
+   "fieldtype": "Float",
+   "label": "Working Hours"
+  },
+  {
+   "fieldname": "column_break_nott",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "national_location_code",
+   "fieldtype": "Data",
+   "label": "National Location Code"
+  },
+  {
+   "fieldname": "facility_characteristics",
+   "fieldtype": "Data",
+   "label": "Facility Characteristics"
+  },
+  {
+   "fieldname": "storage_capacity",
+   "fieldtype": "Float",
+   "label": "Storage Capacity"
+  },
+  {
+   "fieldname": "column_break_plth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "regulatory_registration_number",
+   "fieldtype": "Data",
+   "label": "Regulatory Registration Number"
+  },
+  {
+   "fieldname": "responsible_officer",
+   "fieldtype": "Data",
+   "label": "Responsible Officer"
+  },
+  {
+   "fieldname": "cold_chain_availability",
+   "fieldtype": "Float",
+   "label": "Cold - Chain Availability"
+  },
+  {
+   "fieldname": "operational_mode_configuration_section",
+   "fieldtype": "Section Break",
+   "label": "Operational Mode Configuration"
+  },
+  {
+   "fieldname": "select_svgy",
+   "fieldtype": "Select",
+   "label": "Operational Mode",
+   "options": "\nOnline\nOffline\nMobile\nHybrid"
+  },
+  {
+   "fieldname": "section_break_eual",
+   "fieldtype": "Section Break",
+   "label": "Location Specific Transaction Numbering"
+  },
+  {
+   "fieldname": "facility_level_numbering_series",
+   "fieldtype": "Data",
+   "label": "Facility Level Numbering Series"
+  },
+  {
+   "fieldname": "column_break_jhzc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dynamic_naming_series_pattern",
+   "fieldtype": "Data",
+   "label": "Dynamic Naming Series Pattern"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2026-02-26 17:28:07.184817",
+ "modified_by": "sahil.sawant@erpdata.in",
+ "module": "WmsPro",
+ "name": "Facility",
+ "naming_rule": "Expression",
+ "nsm_parent_field": "parent_facility",
+ "owner": "sahil.sawant@erpdata.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

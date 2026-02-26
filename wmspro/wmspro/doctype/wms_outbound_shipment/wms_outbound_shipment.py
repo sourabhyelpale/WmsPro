@@ -104,8 +104,8 @@ class WMSOutboundShipment(Document):
             self.status = "Packing"
 
     @frappe.whitelist()
-    def create_packing_list(self):
-
+    def create_packing_list(self):    
+ 
         if self.docstatus != 1:
             frappe.throw("Shipment must be submitted")
 
