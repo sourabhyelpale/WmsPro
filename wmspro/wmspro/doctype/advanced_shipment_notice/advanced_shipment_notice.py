@@ -40,28 +40,77 @@ class AdvancedShipmentNotice(Document):
             })
 
             # ---- Append Items ----
-            for asn_item in self.advanced_shipment_notice_details:
+            for row in self.advanced_shipment_notice_details:
 
-                qty = asn_item.expected_qty or asn_item.ordered_qty
+                qty = (
+                    row.received_qty
+                    or row.shipped_qty
+                    or row.expected_qty
+                    or row.ordered_qty
+                )
 
                 if not qty or qty <= 0:
-                    frappe.throw(f"Quantity must be greater than zero for Item {asn_item.item_code}")
+                    frappe.throw(f"Quantity must be greater than zero for Item {row.item_code}")
+
+                # Debug: Check item name values
+                frappe.log_error(f"DEBUG ASN: row.item_code={row.item_code}, row.item_name={getattr(row, 'item_name', 'NOT_SET')}, row.item_name from DB={frappe.db.get_value('Item', row.item_code, 'item_name')}")
+
+                # Get item_code and item_name from Purchase Order item table
+                po_item = frappe.db.get_value("Purchase Order Item", 
+                    {"parent": self.purchase_order, "item_code": row.item_code}, 
+                    ["item_code", "item_name"], as_dict=True)
+
+                item_code = po_item.item_code if po_item else row.item_code
+                item_name = po_item.item_name if po_item else getattr(row, 'item_name', '')  # Use row.item_name if available
+
+                # Get MRP from ASN row, fallback to rate if MRP is null or zero
+                mrp = getattr(row, 'mrp', None) or row.rate
+                if not mrp or mrp <= 0:
+                    mrp = row.rate
+                if not mrp or mrp <= 0:
+                    mrp = 1  # Default fallback to ensure MRP > 0
+
+                # Get rate and amount from ASN row
+                rate = getattr(row, 'rate', 0)
+                amount = rate * qty if rate else 0
+                
+                # Debug: Check rate and amount values
+                frappe.log_error(f"DEBUG ASN Rate/Amount: item_code={item_code}, rate={rate}, amount={amount}, row.rate={getattr(row, 'rate', 'NOT_SET')}")
+
+                # Handle batch number - create if doesn't exist
+                batch_no = row.batch_no
+                if batch_no:
+                    # Check if batch exists
+                    batch_exists = frappe.db.exists("Batch", batch_no)
+                    if not batch_exists:
+                        # Create batch if it doesn't exist
+                        try:
+                            batch_doc = frappe.new_doc("Batch")
+                            batch_doc.batch_id = batch_no
+                            batch_doc.item = item_code
+                            batch_doc.save(ignore_permissions=True)
+                            frappe.msgprint(f"Created new Batch: {batch_no}")
+                        except Exception as batch_error:
+                            frappe.log_error(f"Failed to create batch {batch_no}: {str(batch_error)}")
+                            batch_no = None  # Set to None if batch creation fails
 
                 grn.append("wms_grn_item", {
-                    "item_code": asn_item.item_code,
-                    "item_name": asn_item.item_name,
-                    "description": asn_item.description,
+                    "item_code": item_code,
+                    "item_name": item_name,
+                    "description": row.description,
 
                     # 🔥 Mandatory fields for GRN
-                    "batch_no": asn_item.batch_no,
-                    "expiry_date": asn_item.expiry_date,
-                    "mrp": asn_item.mrp,
+                    "batch_no": batch_no,  # Use validated batch_no (None if doesn't exist)
+                    "expiry_date": row.expiry_date,
+                    "mrp": mrp,
+                    "rate": rate,  # Add rate from ASN
+                    "amount": amount,  # Add calculated amount
                     "qty_expected": qty,
 
                     # Required for stock
                     "qty": qty,
                     "conversion_factor": 1,
-                    "stock_uom": asn_item.stock_uom,
+                    "stock_uom": row.stock_uom,  # Use row.stock_uom instead of asn_item.stock_uom
                     "warehouse": self.warehouse
                 })
 

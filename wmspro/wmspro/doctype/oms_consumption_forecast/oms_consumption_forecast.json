@@ -14,6 +14,7 @@
   "forecast_date",
   "forecast_horizon_days",
   "forecast_method",
+  "column_break_zgah",
   "historical_avg_daily",
   "forecast_qty",
   "confidence_pct",
@@ -21,6 +22,7 @@
   "reorder_point",
   "should_trigger_requisition",
   "requisition_generated",
+  "section_break_nscp",
   "notes"
  ],
  "fields": [
@@ -51,7 +53,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Facility",
-   "options": "Warehouse",
+   "options": "Facility",
    "reqd": 1
   },
   {
@@ -124,13 +126,21 @@
    "fieldname": "notes",
    "fieldtype": "Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_zgah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nscp",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-19 11:07:12.889152",
+ "modified": "2026-02-27 12:37:41.083329",
  "modified_by": "Administrator",
  "module": "WmsPro",
  "name": "OMS Consumption Forecast",

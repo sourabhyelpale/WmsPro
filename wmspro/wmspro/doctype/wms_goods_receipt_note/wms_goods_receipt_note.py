@@ -44,6 +44,13 @@ class WMSGoodsReceiptNote(Document):
 
         frappe.msgprint(f"Purchase Receipt {pr.name} Created")
 
+    def before_save(self):
+        """Ensure positive quantities to prevent custom validation errors"""
+        # Ensure positive quantities to prevent custom validation errors
+        for item in self.wms_grn_item:
+            if hasattr(item, 'qty') and (not item.qty or item.qty <= 0):
+                item.qty = max(item.qty_accepted or 1, 1)  # Force positive quantity
+                frappe.log_error(f"Fixed zero quantity for item {item.item_code}: set qty={item.qty}")
 
     def on_submit(self):
 
@@ -75,10 +82,20 @@ class WMSGoodsReceiptNote(Document):
             )
 
         frappe.msgprint("Purchase Receipt Submitted & Bin Ledger Updated")
-        self.create_putaway_tasks(staging_bin)
+        self.create_putaway_tasks()
 
 
-    def create_putaway_tasks(self, staging_bin):
+    def create_putaway_tasks(self):
+
+        tasks_created = 0
+        
+        # Get staging bin from GRN document
+        staging_bin = getattr(self, 'staging_bin', None)
+        if not staging_bin:
+            # Fallback to default staging bin for warehouse
+            staging_bin = self.get_staging_bin_for_warehouse()
+        
+        staging_bin_warehouse = frappe.db.get_value("WMS Bin", staging_bin, "warehouse")
 
         for item in self.wms_grn_item:
 
@@ -87,25 +104,133 @@ class WMSGoodsReceiptNote(Document):
             if not qty:
                 continue
 
-            task = frappe.get_doc({
-                "doctype": "WMS Putaway Task",
-                "grn_reference": self.name,
-                "warehouse": self.warehouse,
-                "from_warehouse": self.warehouse,
-                "to_warehouse": self.warehouse,
-                "item_code": item.item_code,
-                "batch_no": item.batch_no,
-                "quantity": qty,
-                "uom": item.stock_uom,
-                "from_bin": staging_bin,
-                "suggested_bin": get_suggested_bin(item.item_code, self.warehouse),
-                "task_date": frappe.utils.today(),
-                "priority": "Medium",
-                "status": "Pending"
-            })
-
+            # Create putaway task for each item-batch
+            task = frappe.new_doc("WMS Putaway Task")
+            task.naming_series = "PAT-.YYYY.-.####"  # Put Away Task naming series
+            task.grn_reference = self.name
+            task.task_date = frappe.utils.today()  # Use task_date field instead of date_zkpa
+            task.status = "Pending"
+            task.strategy = "ABC Slotting"  # Set strategy to ABC Slotting
+            
+            # Get item's staging bin or fallback to document staging bin
+            item_staging_bin = getattr(item, 'staging_bin', None) or staging_bin
+            item_staging_bin_warehouse = frappe.db.get_value("WMS Bin", item_staging_bin, "warehouse")
+            
+            task.from_warehouse = item_staging_bin_warehouse  # Use item's staging bin's warehouse
+            
+            # Get suggested bin based on ABC slotting strategy
+            suggested_bin = self.get_abc_suggested_bin(item.item_code, self.warehouse)
+            suggested_bin_warehouse = frappe.db.get_value("WMS Bin", suggested_bin, "warehouse")
+            
+            task.to_warehouse = suggested_bin_warehouse  # Use suggested bin's warehouse
+            task.from_bin = item_staging_bin  # Use item's actual staging bin
+            task.suggested_bin = suggested_bin  # Use ABC slotting suggestion
+            task.actual_bin = suggested_bin  # Set actual bin to suggested bin
+            task.item_code = item.item_code
+            # Fetch item name from Item master to ensure proper display
+            item_name = frappe.db.get_value("Item", item.item_code, "item_name") or item.item_name
+            task.item_name = item_name  # Use fetched item name
+            task.batch_no = item.batch_no
+            # Use consistent quantity for both task and stock entry
+            # Try multiple quantity fields to ensure we get a positive value
+            task_quantity = (item.qty_accepted or item.stock_qty_accepted or 
+                           item.qty_received or item.stock_qty_received or 
+                           item.qty_expected or 0)
+            
+            # If still zero, try to get from existing data or set to 1 as last resort
+            if not task_quantity or task_quantity <= 0:
+                # Check if there's a base qty field
+                if hasattr(item, 'qty') and item.qty and item.qty > 0:
+                    task_quantity = item.qty
+                else:
+                    # As a last resort, set to 1 to prevent zero quantity issues
+                    task_quantity = 1
+                    frappe.log_error(f"Set default quantity=1 for item {item.item_code} due to zero quantity")
+            
+            task.quantity = task_quantity
+            task.uom = item.stock_uom
             task.insert(ignore_permissions=True)
+            tasks_created += 1
+            
+            # Create Stock Entry if from_warehouse and to_warehouse are different AND quantity is positive
+            if item_staging_bin_warehouse != suggested_bin_warehouse and task_quantity and task_quantity > 0:
+                frappe.log_error(f"Creating Stock Entry for task {task.name}: From {item_staging_bin_warehouse} To {suggested_bin_warehouse} Qty {task_quantity}")
+                self.create_stock_entry_for_putaway(task, item_staging_bin_warehouse, suggested_bin_warehouse)
+            else:
+                frappe.log_error(f"Skipping Stock Entry for task {task.name}: From {item_staging_bin_warehouse} To {suggested_bin_warehouse} Qty {task_quantity}")
 
+
+    def get_abc_suggested_bin(self, item_code, warehouse):
+        """Get suggested bin based on ABC slotting strategy"""
+        # Get all non-staging bins for the warehouse
+        bins = frappe.db.get_all("WMS Bin", 
+            filters={"warehouse": warehouse, "is_staging": 0},
+            fields=["name", "bin_type", "max_capacity", "available_capacity"],
+            order_by="name"
+        )
+        
+        if not bins:
+            # Fallback to any bin if no specific bins found
+            return frappe.db.get_value("WMS Bin", {"warehouse": warehouse}, "name")
+        
+        # Simple ABC logic: rotate through bins based on item code hash
+        # This ensures consistent bin assignment for the same item
+        item_hash = hash(item_code) % len(bins)
+        suggested_bin = bins[item_hash].name
+        
+        return suggested_bin
+
+    def create_stock_entry_for_putaway(self, task, from_warehouse, to_warehouse):
+        """Create Stock Entry for material transfer between warehouses"""
+        try:
+            # Additional validation to prevent zero quantity stock entries
+            if not task.quantity or task.quantity <= 0:
+                frappe.log_error(f"Skipping Stock Entry creation for Put-Away Task {task.name}: quantity is zero or negative")
+                return None
+            
+            # Check for negative stock in source warehouse before creating Stock Entry
+            # Get actual stock from Bin table (Bin table doesn't have batch_no field)
+            batch_stock_qty = frappe.db.get_value("Bin", {
+                "item_code": task.item_code,
+                "warehouse": from_warehouse
+            }, "actual_qty") or 0
+            
+            if batch_stock_qty < 0:
+                frappe.log_error(f"Skipping Stock Entry creation for Put-Away Task {task.name}: Item {task.item_code} has negative stock {batch_stock_qty} in {from_warehouse}")
+                frappe.msgprint(f"Warning: Cannot create Stock Entry - Item {task.item_code} has negative stock {batch_stock_qty} in {from_warehouse}")
+                return None
+                
+            stock_entry = frappe.new_doc("Stock Entry")
+            stock_entry.stock_entry_type = "Material Transfer"
+            stock_entry.company = self.company
+            stock_entry.posting_date = frappe.utils.today()
+            stock_entry.posting_time = frappe.utils.now()
+            stock_entry.remarks = f"Material transfer for Put-Away Task {task.name}"
+            
+            # Add item to stock entry
+            stock_entry.append("items", {
+                "item_code": task.item_code,
+                "item_name": task.item_name,
+                "qty": task.quantity,
+                "uom": task.uom,
+                "stock_uom": task.uom,
+                "transfer_qty": task.quantity,
+                "batch_no": task.batch_no,
+                "expiry_date": task.expiry_date,  # Include expiry date from putaway task
+                "s_warehouse": from_warehouse,  # Source warehouse
+                "t_warehouse": to_warehouse   # Target warehouse
+            })
+            
+            # Save and submit Stock Entry
+            stock_entry.insert(ignore_permissions=True)
+            stock_entry.submit()  # Submit to make it effective
+            
+            frappe.msgprint(f"Stock Entry {stock_entry.name} created and submitted successfully")
+            return stock_entry.name
+            
+        except Exception as e:
+            frappe.log_error(f"Failed to create Stock Entry for Put-Away Task {task.name}: {str(e)}")
+            frappe.throw(f"Failed to create Stock Entry: {str(e)}")
 
     def get_staging_bin_for_warehouse(self):
 

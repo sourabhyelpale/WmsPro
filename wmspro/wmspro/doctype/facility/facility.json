@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Facility.warehouse.-.#####",
+ "autoname": "Facility-.warehouse.-.#####",
  "creation": "2026-02-26 16:13:10.675590",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,10 +10,12 @@
   "column_break_rmes",
   "lft",
   "rgt",
-  "is_group",
-  "old_parent",
-  "parent_facility",
   "warehouse",
+  "is_group",
+  "column_break_uomf",
+  "old_parent",
+  "column_break_dqee",
+  "parent_facility",
   "catchment_population_capture_section",
   "catchment_population",
   "column_break_muxf",
@@ -218,14 +220,22 @@
    "fieldtype": "Link",
    "label": "Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_uomf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dqee",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2026-02-26 17:28:07.184817",
- "modified_by": "sahil.sawant@erpdata.in",
+ "modified": "2026-02-27 10:24:08.521064",
+ "modified_by": "Administrator",
  "module": "WmsPro",
  "name": "Facility",
  "naming_rule": "Expression",

@@ -114,7 +114,9 @@ frappe.ui.form.on('Advanced Shipment Notice', {
                         let row = frm.add_child("advanced_shipment_notice_details");
 
                         row.item_code = item.item_code;
+                        row.item_name = item.item_name;  // Add item_name
                         row.description = item.description;
+                        row.rate = item.rate;  // Add rate from PO
                         row.ordered_qty = pending_qty;
                         row.expected_qty = pending_qty; 
                         row.stock_uom = item.stock_uom;      

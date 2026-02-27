@@ -247,3 +247,8 @@ class WMSPickList(Document):
 
         doc.status = "Packed"
         doc.save(ignore_permissions=True)
+
+
+
+#//////////////////////////////////////  new //////////////////////////////////////////////
+

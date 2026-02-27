@@ -252,7 +252,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-18 18:18:05.960275",
+ "modified": "2026-02-27 11:10:28.648977",
  "modified_by": "Administrator",
  "module": "WmsPro",
  "name": "OMS Fulfillment Order",
@@ -269,7 +269,6 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],
