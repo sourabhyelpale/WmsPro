@@ -163,7 +163,10 @@ fixtures = [
         "filters": [
             ["name", "=", "OMS Req Work flow"]
         ]
-    }
+    },
+    {"dt": "Insights Workbook"},
+    {"dt": "Insights Data Source"}
+
 ]
 
 # Scheduled Tasks

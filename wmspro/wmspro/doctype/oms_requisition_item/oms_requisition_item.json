@@ -101,7 +101,6 @@
   {
    "fieldname": "qty_allocated",
    "fieldtype": "Float",
-   "in_list_view": 1,
    "label": "Quantity Allocated"
   },
   {
@@ -139,8 +138,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-19 11:47:55.573484",
- "modified_by": "sahil.sawant@erpdata.in",
+ "modified": "2026-02-28 17:03:03.923662",
+ "modified_by": "sanket.lohar@erpdata.in",
  "module": "WmsPro",
  "name": "OMS Requisition Item",
  "owner": "sahil.sawant@erpdata.in",

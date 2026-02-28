@@ -1,290 +1,6 @@
 # Copyright (c) 2026, Quantbit Technologies Private Limited  and contributors
 # For license information, please see license.txt
 
-# import frappe
-# from frappe.model.document import Document
-# from frappe.utils import nowdate
-
-
-# class OMSFulfillmentOrder(Document):
-
-#     def allocate_inventory(self):
-
-#         if self.allocation_complete:
-#             frappe.throw("Inventory already allocated.")
-
-#         if not self.source_warehouse:
-#             frappe.throw("Source Warehouse is required.")
-
-#         for item in self.items:
-
-#             required_qty = item.qty_required
-#             allocated_qty = 0
-
-#             # Fetch bins sorted by FEFO (expiry date ascending)
-#             bins = frappe.db.sql("""
-#                 SELECT
-#                     name,
-#                     bin,
-#                     item_code,
-#                     batch_no,
-#                     warehouse, 
-#                     expiry_date,
-#                     SUM(qty_change) as balance_qty
-#                 FROM `tabWMS Bin Ledger`
-#                 WHERE
-#                     warehouse = %s
-#                     AND item_code = %s
-#                 GROUP BY bin, batch_no
-#                 HAVING balance_qty > 0
-#                 ORDER BY expiry_date ASC
-#             """, (self.source_warehouse, item.item_code), as_dict=True)
-
-#             if not bins:
-#                 frappe.throw(f"No stock available for Item {item.item_code}")
-
-#             for bin_row in bins:
-
-#                 available = bin_row.balance_qty
-#                 if available <= 0:
-#                     continue
-
-#                 qty_to_allocate = min(required_qty - allocated_qty, available)
-
-#                 if qty_to_allocate <= 0:
-#                     break
-
-#                 # Write Reservation Entry in WMS Bin Ledger
-#                 reservation = frappe.get_doc({
-#                     "doctype": "WMS Bin Ledger",
-#                     "bin": bin_row.bin,
-#                     "item_code": item.item_code,
-#                     "batch_no": bin_row.batch_no,
-#                     "warehouse": self.source_warehouse,
-#                     "expiry_date": bin_row.expiry_date,
-#                     "qty_change": -qty_to_allocate,
-#                     "voucher_type": "OMS Fulfillment Order",
-#                     "voucher_no": self.name
-#                 })
-#                 reservation.insert(ignore_permissions=True)
-
-#                 # Update Child Table Allocation Fields
-#                 item.qty_allocated += qty_to_allocate 
-#                 item.batch_no = bin_row.batch_no
-#                 item.bin_location = bin_row.bin
-
-#                 allocated_qty += qty_to_allocate
-
-#                 if allocated_qty >= required_qty:
-#                     break
-
-#             if allocated_qty < required_qty:
-#                 frappe.throw(
-#                     f"Insufficient stock for {item.item_code}. "
-#                     f"Required: {required_qty}, Allocated: {allocated_qty}"
-#                 )
-
-#         self.allocation_complete = 1
-#         self.status = "Allocated"
-
-#         frappe.msgprint("Inventory Allocation Completed Successfully.")
-
-
-
-
-
-#//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-##############original #######################################
-
-
-
-# import frappe
-# from frappe.model.document import Document
-# from frappe.utils import nowdate, nowtime
-
-
-# class OMSFulfillmentOrder(Document):
-
-#     def on_submit(self):
-#         self.allocate_inventory()
-#         self.create_pick_list()
-
-#     def allocate_inventory(self):
-#         if self.allocation_complete:
-#             return
-
-#         for item in self.items:
-#             qty_needed = item.qty_required
-
-#             bins = frappe.db.sql(
-#                 """
-#                 SELECT
-#                     bl.bin_location,
-#                     bl.balance_qty,
-#                     bl.reserved_qty,
-#                     bl.available_qty
-#                 FROM `tabWMS Bin Ledger` bl
-#                 WHERE bl.item_code = %s
-#                   AND bl.warehouse = %s
-#                   AND bl.available_qty > 0
-#                   AND bl.creation = (
-#                         SELECT MAX(creation)
-#                         FROM `tabWMS Bin Ledger`
-#                         WHERE bin_location = bl.bin_location
-#                           AND item_code = bl.item_code
-#                   )
-#                 ORDER BY bl.creation ASC
-#                 """,
-#                 (item.item_code, self.source_warehouse),
-#                 as_dict=True
-#             )
-
-#             if not bins:
-#                 frappe.throw(
-#                     f"No stock available for item {item.item_code} "
-#                     f"in warehouse {self.source_warehouse}"
-#                 )
-
-#             for row in bins:
-#                 if qty_needed <= 0:
-#                     break
-
-#                 qty_to_reserve = min(row.available_qty, qty_needed)
-
-#                 self._reserve_stock(
-#                     bin_location=row.bin_location,
-#                     item_code=item.item_code,
-#                     balance_qty=row.balance_qty,
-#                     reserved_qty=row.reserved_qty,
-#                     qty_to_reserve=qty_to_reserve
-#                 )
-
-#                 qty_needed -= qty_to_reserve
-
-#             if qty_needed > 0:
-#                 frappe.throw(
-#                     f"Insufficient stock for item {item.item_code}. Short by {qty_needed}"
-#                 )
-
-#         self.allocation_complete = 1
-#         self.status = "Allocated"
-
-#     def _reserve_stock(
-#         self,
-#         bin_location,
-#         item_code,
-#         balance_qty,
-#         reserved_qty,
-#         qty_to_reserve
-#     ):
-#         frappe.get_doc({
-#             "doctype": "WMS Bin Ledger",
-#             "posting_date": nowdate(),
-#             "posting_time": nowtime(),
-#             "warehouse": self.source_warehouse,
-#             "bin_location": bin_location,
-#             "item_code": item_code,
-#             "quantity_change": 0,
-#             "balance_qty": balance_qty,
-#             "reserved_qty": reserved_qty + qty_to_reserve,
-#             "available_qty": balance_qty - (reserved_qty + qty_to_reserve),
-#             "stock_uom": frappe.db.get_value("Item", item_code, "stock_uom"),
-#             "voucher_type": "OMS Fulfillment Order",
-#             "voucher_no": self.name,
-#             "is_reservation": 1
-#         }).insert(ignore_permissions=True)
-
-#     def create_pick_list(self):
-#         if not self.allocation_complete:
-#             frappe.throw("Inventory not allocated yet")
-
-#         if self.pick_list:
-#             return
-
-#         reservations = frappe.db.sql(
-#             """
-#             SELECT
-#                 bin_location,
-#                 item_code,
-#                 batch_no,
-#                 reserved_qty
-#             FROM `tabWMS Bin Ledger`
-#             WHERE voucher_type = 'OMS Fulfillment Order'
-#               AND voucher_no = %s
-#               AND is_reservation = 1
-#               AND reserved_qty > 0
-#             """,
-#             self.name,
-#             as_dict=True
-#         )
-
-#         if not reservations:
-#             frappe.throw("No reserved stock found for Pick List")
-
-#         zone = frappe.db.get_value(
-#             "WMS Bin",
-#             reservations[0].bin_location,
-#             "zone"
-#         )
-
-#         if zone and not frappe.db.exists("WMS Zone", zone):
-#             zone = None
-
-#         if not zone:
-#             zone = frappe.db.get_value(
-#                 "WMS Zone",
-#                 {"is_active": 1},
-#                 "name"
-#             )
-
-#         if not zone:
-#             frappe.throw(
-#                 "No valid WMS Zone found. Please create a WMS Zone and assign it to bins."
-#             )
-
-#         pick_list = frappe.get_doc({
-#             "doctype": "WMS Pick List",
-#             "pick_date": nowdate(),
-#             "warehouse": self.source_warehouse,
-#             "zone": zone,
-#             "picking_strategy": "FEFO",
-#             "path_optimization": "Serpentine",
-#             "status": "Released",
-#             "items": []
-#         })
-
-#         sequence = 1
-
-#         for row in reservations:
-#             stock_uom = frappe.db.get_value(
-#                 "Item",
-#                 row.item_code,
-#                 "stock_uom"
-#             )
-
-#             pick_list.append("items", {
-#                 "sequence": sequence,
-#                 "item_code": row.item_code,
-#                 "bin_location": row.bin_location,
-#                 "batch_no": row.batch_no,
-#                 "warehouse": self.source_warehouse,
-#                 "qty_ordered": row.reserved_qty,
-#                 "uom": stock_uom
-#             })
-
-#             sequence += 1
-
-#         pick_list.insert(ignore_permissions=True)
-#         self.pick_list = pick_list.name
-#         self.status = "Pick List Created"
-
-
-
-#///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
 import frappe
 from frappe.model.document import Document
@@ -293,167 +9,118 @@ from frappe.utils import nowdate, nowtime
 
 class OMSFulfillmentOrder(Document):
 
-    # -----------------------------------------------------
-    # RUN WHEN USER CLICKS SAVE (DRAFT)
-    # -----------------------------------------------------
-    def on_update(self):
+    @frappe.whitelist()
+    def create_pick_list_button(self):
 
-        # Run only in Draft
-        if self.docstatus != 0:
-            return
+        if self.pick_list:
+            frappe.throw("Pick List already created")
 
-        # Prevent duplicate allocation
-        if self.allocation_complete:
-            return
+        allocations = self.allocate_inventory()
 
-        self.allocate_inventory()
+        if not allocations:
+            frappe.throw("No stock available to create Pick List")
 
-    # -----------------------------------------------------
-    # INVENTORY ALLOCATION
-    # -----------------------------------------------------
+        pick_list = self.create_pick_list_from_allocations(allocations)
+
+        self.db_set("pick_list", pick_list.name)
+        self.db_set("status", "Pick List Created")
+
+        return pick_list.name
+
+    # ---------------------------------------------------------
+    # STEP 1: Allocate inventory BIN-WISE
+    # ---------------------------------------------------------
     def allocate_inventory(self):
 
+        if not self.source_warehouse:
+            frappe.throw("Source Warehouse is required")
+
+        allocations = []
+
         for item in self.items:
-            qty_needed = item.qty_required
+            qty_needed = item.qty_required or 0
+            qty_allocated = 0
 
             bins = frappe.db.sql(
                 """
                 SELECT
-                    bl.bin_location,
-                    bl.balance_qty,
-                    bl.reserved_qty,
-                    bl.available_qty
-                FROM `tabWMS Bin Ledger` bl
-                WHERE bl.item_code = %s
-                  AND bl.warehouse = %s
-                  AND bl.available_qty > 0
-                  AND bl.creation = (
-                        SELECT MAX(creation)
-                        FROM `tabWMS Bin Ledger`
-                        WHERE bin_location = bl.bin_location
-                          AND item_code = bl.item_code
-                  )
-                ORDER BY bl.creation ASC
+                    bin_location,
+                    balance_qty,
+                    IFNULL(reserved_qty, 0) AS reserved_qty,
+                    available_qty
+                FROM `tabWMS Bin Ledger`
+                WHERE item_code = %s
+                  AND warehouse = %s
+                  AND available_qty > 0
+                  AND is_cancelled = 0
+                ORDER BY posting_datetime ASC
                 """,
                 (item.item_code, self.source_warehouse),
                 as_dict=True
             )
 
-            if not bins:
-                frappe.throw(
-                    f"No stock available for item {item.item_code} "
-                    f"in warehouse {self.source_warehouse}"
-                )
-
             for row in bins:
                 if qty_needed <= 0:
                     break
 
-                qty_to_reserve = min(row.available_qty, qty_needed)
+                qty = min(row.available_qty, qty_needed)
 
-                self._reserve_stock(
-                    bin_location=row.bin_location,
+                self.create_reservation_entry(
+                    row=row,
                     item_code=item.item_code,
-                    balance_qty=row.balance_qty,
-                    reserved_qty=row.reserved_qty,
-                    qty_to_reserve=qty_to_reserve
+                    qty=qty
                 )
 
-                qty_needed -= qty_to_reserve
+                allocations.append({
+                    "item_code": item.item_code,
+                    "bin_location": row.bin_location,
+                    "qty": qty
+                })
 
-            if qty_needed > 0:
-                frappe.throw(
-                    f"Insufficient stock for item {item.item_code}. "
-                    f"Short by {qty_needed}"
-                )
+                qty_needed -= qty
+                qty_allocated += qty
 
-        self.db_set("allocation_complete", 1)
-        self.db_set("status", "Allocated")
+            item.db_set("qty_allocated", qty_allocated)
 
-    # -----------------------------------------------------
-    # RESERVE STOCK ENTRY
-    # -----------------------------------------------------
-    def _reserve_stock(
-        self,
-        bin_location,
-        item_code,
-        balance_qty,
-        reserved_qty,
-        qty_to_reserve
-    ):
+        return allocations
+
+    # ---------------------------------------------------------
+    # STEP 2: Create reservation entry
+    # ---------------------------------------------------------
+    def create_reservation_entry(self, row, item_code, qty):
+
         frappe.get_doc({
             "doctype": "WMS Bin Ledger",
             "posting_date": nowdate(),
             "posting_time": nowtime(),
+            "posting_datetime": frappe.utils.now_datetime(),
             "warehouse": self.source_warehouse,
-            "bin_location": bin_location,
+            "bin_location": row.bin_location,
             "item_code": item_code,
             "quantity_change": 0,
-            "balance_qty": balance_qty,
-            "reserved_qty": reserved_qty + qty_to_reserve,
-            "available_qty": balance_qty - (reserved_qty + qty_to_reserve),
+            "balance_qty": row.balance_qty,
+            "reserved_qty": row.reserved_qty + qty,
+            "available_qty": row.available_qty - qty,
             "stock_uom": frappe.db.get_value("Item", item_code, "stock_uom"),
             "voucher_type": "OMS Fulfillment Order",
             "voucher_no": self.name,
-            "is_reservation": 1
+            "is_reservation": 1,
+            "is_cancelled": 0
         }).insert(ignore_permissions=True)
 
-    # -----------------------------------------------------
-    # BUTTON METHOD (WHITELISTED)
-    # -----------------------------------------------------
-    @frappe.whitelist()
-    def create_pick_list_button(self):
+    # ---------------------------------------------------------
+    # STEP 3: CREATE PICK LIST (ONE ROW PER ITEM)
+    # ---------------------------------------------------------
+    def create_pick_list_from_allocations(self, allocations):
 
-        if self.pick_list:
-            frappe.throw("Pick List already created.")
+        first_bin = allocations[0]["bin_location"]
 
-        if not self.allocation_complete:
-            frappe.throw("Please allocate inventory first.")
-
-        pick_list = self._create_pick_list()
-
-        return pick_list.name
-
-    # -----------------------------------------------------
-    # INTERNAL PICK LIST CREATION
-    # -----------------------------------------------------
-    def _create_pick_list(self):
-
-        reservations = frappe.db.sql(
-            """
-            SELECT
-                bin_location,
-                item_code,
-                batch_no,
-                reserved_qty
-            FROM `tabWMS Bin Ledger`
-            WHERE voucher_type = 'OMS Fulfillment Order'
-              AND voucher_no = %s
-              AND is_reservation = 1
-              AND reserved_qty > 0
-            """,
-            self.name,
-            as_dict=True
-        )
-
-        if not reservations:
-            frappe.throw("No reserved stock found.")
-
-        zone = frappe.db.get_value(
-            "WMS Bin",
-            reservations[0].bin_location,
-            "zone"
-        )
+        zone = frappe.db.get_value("WMS Bin", first_bin, "zone")
+        if not zone:
+            zone = frappe.db.get_value("WMS Zone", {"is_active": 1}, "name")
 
         if not zone:
-            zone = frappe.db.get_value(
-                "WMS Zone",
-                {"is_active": 1},
-                "name"
-            )
-
-        if not zone:
-            frappe.throw("No active WMS Zone found.")
+            frappe.throw("No active WMS Zone found")
 
         pick_list = frappe.get_doc({
             "doctype": "WMS Pick List",
@@ -464,30 +131,36 @@ class OMSFulfillmentOrder(Document):
             "items": []
         })
 
-        sequence = 1
+        # 🔥 AGGREGATE allocations by item
+        item_qty_map = {}
+        bin_map = {}
 
-        for row in reservations:
-            stock_uom = frappe.db.get_value(
+        for row in allocations:
+            item_qty_map.setdefault(row["item_code"], 0)
+            item_qty_map[row["item_code"]] += row["qty"]
+
+            bin_map.setdefault(row["item_code"], [])
+            bin_map[row["item_code"]].append(row["bin_location"])
+
+        seq = 1
+        for item_code, total_qty in item_qty_map.items():
+            item_name, stock_uom = frappe.db.get_value(
                 "Item",
-                row.item_code,
-                "stock_uom"
+                item_code,
+                ["item_name", "stock_uom"]
             )
 
             pick_list.append("items", {
-                "sequence": sequence,
-                "item_code": row.item_code,
-                "bin_location": row.bin_location,
-                "batch_no": row.batch_no,
+                "sequence": seq,
+                "item_code": item_code,
+                "item_name": item_name,
                 "warehouse": self.source_warehouse,
-                "qty_ordered": row.reserved_qty,
-                "uom": stock_uom
+                "qty_ordered": total_qty,
+                "uom": stock_uom,
+                "bin_location": ", ".join(set(bin_map[item_code]))
             })
 
-            sequence += 1
+            seq += 1
 
         pick_list.insert(ignore_permissions=True)
-
-        self.db_set("pick_list", pick_list.name)
-        self.db_set("status", "Pick List Created")
-
         return pick_list
